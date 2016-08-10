@@ -1,0 +1,46 @@
+<template name="Perfil">
+	<div class="page-container">
+		<div class="row">
+			<div class="col-md-12" id="content">
+				<div class="row" id="title_row">
+					<div class="col-md-12">
+						<h2 id="page_title" class="pull-left">
+							Perfil
+						</h2>
+						<div id="page_menu" class="pull-right">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12" id="menu">
+				{{> PerfilSideMenu}}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12" id="subcontent">
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="PerfilSideMenu">
+	<ul id="menu-items" class="nav nav-stacked nav-pills">
+		<li id="menu-item-simple" class="{{menuItemClass 'user_settings.profile'}}">
+			<a href="{{pathFor 'user_settings.profile'}}">
+				<i class="material-icons left">
+				</i>
+				Profile
+			</a>
+		</li>
+		<li id="menu-item-simple" class="{{menuItemClass 'user_settings.change_pass'}}">
+			<a href="{{pathFor 'user_settings.change_pass'}}">
+				<i class="material-icons left">
+				</i>
+				Change password
+			</a>
+		</li>
+	</ul>
+</template>
+
