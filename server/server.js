@@ -3,6 +3,7 @@ var verifyEmail = false;
 Accounts.config({ sendVerificationEmail: verifyEmail });
 
 Meteor.startup(function() {
+	// Accounts.createUser({email: 'prueba@prueba.com', password : 'prueba', profile: { name: 'pruebaUser', rol:"user" }});
 	// read environment variables from Meteor.settings
 	if(Meteor.settings && Meteor.settings.env && _.isObject(Meteor.settings.env)) {
 		for(var variableName in Meteor.settings.env) {
@@ -109,7 +110,7 @@ Meteor.startup(function() {
 		}
 	}
 
-	
+
 });
 
 Meteor.methods({
@@ -194,7 +195,7 @@ Accounts.onCreateUser(function (options, user) {
 		user.profile = options.profile;
 	}
 
-	
+
 	return user;
 });
 
@@ -286,7 +287,7 @@ Users.before.update(function(userId, doc, fieldNames, modifier, options) {
 });
 
 Accounts.onLogin(function (info) {
-	
+
 });
 
 Accounts.urls.resetPassword = function (token) {
