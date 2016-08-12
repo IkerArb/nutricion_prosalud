@@ -48,8 +48,8 @@
 
 <template name="PublicLayoutLeftMenu">
 	<ul id="menu-items" class="nav navbar-nav">
-		<li id="menu-item-simple" class="{{menuItemClass 'home_public'}}">
-			<a href="{{pathFor 'home_public'}}">
+		<li id="menu-item-simple" >
+			<a >
 				<i class="material-icons left">
 				</i>
 				Home
@@ -60,13 +60,6 @@
 
 <template name="PublicLayoutRightMenu">
 	<ul id="menu-items" class="nav navbar-nav navbar-right">
-		<li id="menu-item-simple" class="{{menuItemClass 'register'}}">
-			<a href="{{pathFor 'register'}}">
-				<i class="material-icons left">
-				</i>
-				Register
-			</a>
-		</li>
 		<li id="menu-item-simple" class="{{menuItemClass 'login'}}">
 			<a href="{{pathFor 'login'}}">
 				<i class="material-icons left">
@@ -98,7 +91,7 @@
 <template name="PrivateLayoutLeftMenu">
 	<ul id="menu-items" class="nav navbar-nav">
 		<li id="menu-item-simple" class="{{menuItemClass 'home_private'}}">
-			<a href="{{pathFor 'home_private'}}">
+			<a>
 				<i class="material-icons left">
 				</i>
 				Home
@@ -120,8 +113,8 @@
 			</li>
 			<div id="menu-dropdown" class="dropdown-content">
 				<ul id="menu-items">
-					<li class="{{menuItemClass 'user_settings'}}">
-						<a href="{{pathFor 'user_settings'}}">
+					<li >
+						<a >
 							<i class="material-icons left">
 							</i>
 							Settings
@@ -139,4 +132,3 @@
 		</li>
 	</ul>
 </template>
-

@@ -1,6 +1,6 @@
 this.PerfilController = RouteController.extend({
 	template: "Perfil",
-	
+
 
 	yieldTemplates: {
 		/*YIELD_TEMPLATES*/
@@ -16,7 +16,7 @@ this.PerfilController = RouteController.extend({
 	},
 
 	isReady: function() {
-		
+
 
 		var subs = [
 			Meteor.subscribe("current_user_data")
@@ -30,20 +30,19 @@ this.PerfilController = RouteController.extend({
 	},
 
 	data: function() {
-		
+
 
 		var data = {
 			params: this.params || {},
-			current_user_data: Users.findOne({}, {})
 		};
-		
 
-		
+
+
 
 		return data;
 	},
 
 	onAfterAction: function() {
-		
+
 	}
 });
