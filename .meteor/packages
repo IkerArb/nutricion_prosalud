@@ -31,8 +31,9 @@ natestrauser:font-awesome
 matb33:collection-hooks
 perak:user-roles
 copleykj:livestamp
-materialize:materialize@=0.97.3
 flemay:less-autoprefixer
 reactive-dict
 mrt:moment
 rajit:bootstrap3-datepicker
+fourseven:scss
+materialize:materialize

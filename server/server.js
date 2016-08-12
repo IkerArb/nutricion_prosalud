@@ -2,6 +2,13 @@ var verifyEmail = false;
 
 Accounts.config({ sendVerificationEmail: verifyEmail });
 
+// var userOptions = {};
+// userOptions.email = "ikerarbulu@gmail.com";
+// userOptions.password = "prueba";
+// userOptions.profile = {"name":"Iker Arbulu Lozano", "email":"ikerarbulu@gmail.com"};
+//
+// Accounts.createUser(userOptions);
+
 Meteor.startup(function() {
 	// read environment variables from Meteor.settings
 	if(Meteor.settings && Meteor.settings.env && _.isObject(Meteor.settings.env)) {
@@ -109,7 +116,7 @@ Meteor.startup(function() {
 		}
 	}
 
-	
+
 });
 
 Meteor.methods({
@@ -188,13 +195,13 @@ Meteor.methods({
 });
 
 Accounts.onCreateUser(function (options, user) {
-	user.roles = [];
+	user.roles = ['user'];
 
 	if(options.profile) {
 		user.profile = options.profile;
 	}
 
-	
+
 	return user;
 });
 
@@ -286,7 +293,7 @@ Users.before.update(function(userId, doc, fieldNames, modifier, options) {
 });
 
 Accounts.onLogin(function (info) {
-	
+
 });
 
 Accounts.urls.resetPassword = function (token) {
