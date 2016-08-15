@@ -8,15 +8,13 @@ Router.configure({
 
 var publicRoutes = [
 	"login",
+	"logout",
 	"reset_password"
 ];
 
 var privateRoutes = [
 	"home_user",
 	"perfil",
-	"perfil.profile",
-	"perfil.change_pass",
-	"logout",
 	"mensajes",
 	"user_nutriologo",
 	"home_nutriologo",
@@ -24,14 +22,12 @@ var privateRoutes = [
 ];
 
 var freeRoutes = [
-	
+
 ];
 
 var roleMap = [
 	{ route: "home_user",	roles: ["user"] },
 	{ route: "perfil",	roles: ["user"] },
-	{ route: "perfil.profile",	roles: ["user"] },
-	{ route: "perfil.change_pass",	roles: ["user"] },
 	{ route: "mensajes",	roles: ["user","nutriologo"] },
 	{ route: "user_nutriologo",	roles: ["nutriologo"] },
 	{ route: "home_nutriologo",	roles: ["nutriologo"] },
@@ -164,7 +160,7 @@ Router.ensureGranted = function() {
 	}
 };
 
-Router.waitOn(function() { 
+Router.waitOn(function() {
 	Meteor.subscribe("current_user_data");
 });
 
@@ -184,13 +180,11 @@ Router.onBeforeAction(Router.ensureLogged, {only: privateRoutes});
 Router.onBeforeAction(Router.ensureGranted, {only: freeRoutes}); // yes, route from free zone can be restricted to specific set of user roles
 
 Router.map(function () {
-	
+
 	this.route("login", {path: "/login", controller: "LoginController"});
 	this.route("reset_password", {path: "/reset_password/:resetPasswordToken", controller: "ResetPasswordController"});
 	this.route("home_user", {path: "/home_user", controller: "HomeUserController"});
 	this.route("perfil", {path: "/perfil", controller: "PerfilController"});
-	this.route("perfil.profile", {path: "/perfil/profile", controller: "PerfilProfileController"});
-	this.route("perfil.change_pass", {path: "/perfil/change_pass", controller: "PerfilChangePassController"});
 	this.route("logout", {path: "/logout", controller: "LogoutController"});
 	this.route("mensajes", {path: "/mensajes", controller: "MensajesController"});
 	this.route("user_nutriologo", {path: "/user_nutriologo/:_id", controller: "UserNutriologoController"});

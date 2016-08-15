@@ -10,6 +10,7 @@ Accounts.config({ sendVerificationEmail: verifyEmail });
 // Accounts.createUser(userOptions);
 
 Meteor.startup(function() {
+	// Accounts.createUser({email: 'prueba@prueba.com', password : 'prueba', profile: { name: 'pruebaUser', rol:"user" }});
 	// read environment variables from Meteor.settings
 	if(Meteor.settings && Meteor.settings.env && _.isObject(Meteor.settings.env)) {
 		for(var variableName in Meteor.settings.env) {
