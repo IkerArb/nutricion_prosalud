@@ -1,6 +1,56 @@
 Template.HomeUser.rendered = function() {
 	$('.carousel.carousel-slider').carousel({full_width: true,time_constant:400});
 	$(".menu-details").hide();
+	$('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15, // Creates a dropdown of 15 years to control year
+		max: Date.now(),
+	});
+	var today = new Date();
+	var month;
+	switch (today.getMonth()) {
+    case 0:
+        month = " January";
+        break;
+    case 1:
+        month = " February";
+        break;
+    case 2:
+        month = " March";
+        break;
+    case 3:
+        month = " April";
+        break;
+    case 4:
+        month = " May";
+        break;
+    case 5:
+        month = " June";
+        break;
+    case 6:
+        month = " July";
+				break;
+		case 7:
+        month = " August";
+        break;
+    case 8:
+        month = " September";
+        break;
+    case 9:
+        month = " October";
+        break;
+    case 10:
+        month = " November";
+        break;
+    case 11:
+        month = " December";
+	}
+	$('.datepicker').val(today.getDate()+month+","+today.getFullYear());
+	$(".picker__day--today").addClass("picker__day--selected picker__day--highlighted");
+	$(".picker__day--today").attr("aria-selected",true);
+	$(".picker__day--today").attr("aria-activedescendant",true);
+	// console.log(Date().toString());
+	// $('.datepicker').val(Date().toString());
 };
 
 Template.HomeUser.events({
