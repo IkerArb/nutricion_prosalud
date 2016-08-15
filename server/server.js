@@ -2,6 +2,13 @@ var verifyEmail = false;
 
 Accounts.config({ sendVerificationEmail: verifyEmail });
 
+// var userOptions = {};
+// userOptions.email = "ikerarbulu@gmail.com";
+// userOptions.password = "prueba";
+// userOptions.profile = {"name":"Iker Arbulu Lozano", "email":"ikerarbulu@gmail.com"};
+//
+// Accounts.createUser(userOptions);
+
 Meteor.startup(function() {
 	// Accounts.createUser({email: 'prueba@prueba.com', password : 'prueba', profile: { name: 'pruebaUser', rol:"user" }});
 	// read environment variables from Meteor.settings
@@ -189,7 +196,7 @@ Meteor.methods({
 });
 
 Accounts.onCreateUser(function (options, user) {
-	user.roles = [];
+	user.roles = ['user'];
 
 	if(options.profile) {
 		user.profile = options.profile;
