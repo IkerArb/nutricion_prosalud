@@ -1,6 +1,6 @@
 this.HomeAdminController = RouteController.extend({
 	template: "HomeAdmin",
-	
+
 
 	yieldTemplates: {
 		/*YIELD_TEMPLATES*/
@@ -16,7 +16,7 @@ this.HomeAdminController = RouteController.extend({
 	},
 
 	isReady: function() {
-		
+
 
 		var subs = [
 			Meteor.subscribe("all_users")
@@ -30,20 +30,20 @@ this.HomeAdminController = RouteController.extend({
 	},
 
 	data: function() {
-		
+
 
 		var data = {
 			params: this.params || {},
 			all_users: Users.find({}, {})
 		};
-		
 
-		
+
+
 
 		return data;
 	},
 
 	onAfterAction: function() {
-		
+
 	}
 });
