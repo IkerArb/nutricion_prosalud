@@ -1,23 +1,118 @@
 <template name="HomeAdmin">
-	<div class="page-container">
-		<div class="row">
-			<div class="col-md-12" id="content">
-				<div class="row" id="title_row">
-					<div class="col-md-12">
-						<div id="page_menu" class="pull-right">
-						</div>
-					</div>
+	<div class="">
+		<div class="fixed-action-btn" style="top: 100px; right: 40px;">
+	    <a data-target="newUser" class="modal-trigger btn-floating btn-large pink accent-4 tooltipped" data-position="bottom" data-delay="50" data-tooltip="Crea nuevo usuario">
+	      <i class="large material-icons">add</i>
+	    </a>
+	  </div>
+		<div class="tituloUser gray-lighten-5">
+			<div class="row">
+				<h3>Usuarios</h3>
+			</div>
+			<div class="row">
+				Crea o consulta usuarios
+				Asigna nutriologos a pacientes
+			</div>
+		</div>
+		<!-- Tabla de usuarios -->
+		<table class="">
+			 <thead>
+				 <tr>
+						 <th data-field="name">Nombre</th>
+						 <th data-field="email">Correo</th>
+						 <th data-field="birthDay">Fecha de Nacimiento</th>
+						 <th data-field="user">Paciente</th>
+						 <th data-field="nutriologo">Nutriolgo</th>
+						 <th data-field="admin">Admin</th>
+				 </tr>
+			 </thead>
+			 <tbody>
+				 {{#each users}}
+				 <tr>
+					 <td><input id="{{_id}}_name" type="text" class="validate  changeName" value="{{profile.name}}" required></td>
+					 <td><input id="{{_id}}_email" type="text" class="validate changeEmail" value="{{profile.email}}" required></td>
+					 <td><input id="{{_id}}_birthDay" type="date" class="datepicker changeBirthDay" value="{{profile.birthDay}}" required></td>
+					 <td>
+						 	<p>
+	       				<input class="changeRoleUser" style="position:relative"  type="checkbox" id="{{_id}}_changeRoleUser" {{isUser}}/>
+								<label for="{{_id}}_changeRoleUser"></label>
+	     				</p>
+					 </td>
+					 <td>
+						 	<p>
+	       				<input class="changeRoleNutriologo" style="position:relative" type="checkbox" id="{{_id}}_changeRoleNutriologo" {{isNutriologo}}/>
+								<label for="{{_id}}_changeRoleNutriologo"></label>
+	     				</p>
+					 </td>
+					 <td>
+						 	<p>
+	       				<input class="changeRoleAdmin" style="position:relative" type="checkbox" id="{{_id}}_changeRoleAdmin" {{isAdmin}}/>
+								<label for="{{_id}}_changeRoleAdmin"></label>
+	     				</p>
+					 </td>
+				 </tr>
+				 {{/each}}
+			 </tbody>
+		 </table>
+		 <!-- Termina Tabla -->
+	</div>
+	<!-- Modales -->
+	<!-- Modal para agregar usuario -->
+	<div id="newUser" class="modal bottom-sheet">
+    <div class="modal-content">
+      <h4>Crea un nuevo usuario</h4>
+		 		<div class="row">
+			 		<div class="input-field col s12 m6">
+				 		<i class="material-icons prefix">account_circle</i>
+				 		<input id="nombreUser" type="text" class="validate" required>
+				 		<label for="nombreUser">Nombre</label>
+			 		</div>
+					<div style="position:relative" class="input-field col s12 m6">
+						<label style="position:absolute;top:-17px;left:49px" >Fecha de Nacimiento</label>
+				 		<i class="material-icons prefix">date_range</i>
+				 		<input id="fechaNacimiento" type="date" class="datepicker" required>
+			 		</div>
+			 		<div class="input-field col s12 m6">
+				 		<i class="material-icons prefix">email</i>
+				 		<input id="emailUser" type="tel" class="validate" required>
+				 		<label for="emailUser">E-mail</label>
+			 		</div>
+					<div class="input-field col s12 m6">
+					<i class="material-icons prefix">lock</i>
+          <input id="passwordUser" type="password" class="validate" required>
+          <label for="password">Password</label>
+        	</div>
+		 		</div>
+			<div style="margin-left:3rem" class="row">
+				<div  class="input-field col s12 m6">
+					<select id="selectNutriologo">
+						<option value="" disabled selected>Selecciona nutriologo</option>
+						{{#each nutriologo}}
+						<option value={{_id}}>{{profile.name}}</option>
+						{{/each}}
+					</select>
+					<label style="font-size:1rem"><i class="fa fa-user-md" aria-hidden="true"></i> Asigna Nutriologo</label>
 				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-12" id="menu">
+			<div class="row">
+				<p>
+      		<input style="position:relative" type="checkbox" id="roleAdmin" />
+      		<label for="roleAdmin">Administrador</label>
+    		</p>
+				<p>
+      		<input style="position:relative" type="checkbox" id="roleNutriologo" />
+      		<label for="roleNutriologo">Nutriologo</label>
+    		</p>
+				<p>
+      		<input style="position:relative" type="checkbox" id="roleUser" />
+      		<label for="roleUser">Paciente</label>
+    		</p>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-12" id="subcontent">
-			</div>
-		</div>
-	</div>
-</template>
+    </div>
+    <div class="modal-footer">
+      <a id="createUserButton" href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Crear Usuario</a>
+    </div>
+  </div>
 
+	<!-- Terminan Modales -->
+</template>
