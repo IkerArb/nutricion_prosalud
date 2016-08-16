@@ -1,23 +1,111 @@
 <template name="UserNutriologo">
 	<div class="page-container">
-		<div class="row">
-			<div class="col-md-12" id="content">
-				<div class="row" id="title_row">
-					<div class="col-md-12">
-						<div id="page_menu" class="pull-right">
+		<div class="row z-depth-1" style="margin-top:10px">
+	    <div class="col s12">
+	      <ul class="tabs">
+	        <li class="tab col s3"><a href="#resumen">Resumen</a></li>
+	        <li class="tab col s3"><a href="#menuMeals">Menu</a></li>
+	        <li class="tab col s3"><a href="#test4">Test 4</a></li>
+	      </ul>
+	    </div>
+	    <div id="resumen" class="col s12">
+				{{>PerfilUserNutriologo}}
+			</div>
+	    <div id="menuMeals" class="col s12">
+				prueba
+			</div>
+	    <div id="test4" class="col s12">Test 4</div>
+  </div>
+	</div>
+</template>
+
+<template name="PerfilUserNutriologo">
+	<div class="">
+		<div class="actualIndicadores">
+			<div class="row">
+				<h3 id="page_title" class="pull-left">
+					{{name}}
+				</h3>
+				<h5 class="pull-left">
+					{{fechaNacimiento}}
+				</h5>
+			</div>
+			<div id="peso">
+	    	<div class="circleIndicadores pink darken-4">
+					<div style="" class="tituloGrande">
+						<h4>Peso</h4>
+					</div>
+	        <span style="" class="pull-center white-text spanGrande">
+						70 Kgs.
+	        </span>
+					<i style="" class="fa fa-balance-scale iconoGrande" aria-hidden="true"></i>
+	      </div>
+			</div>
+			<div id="indicadores" class="row">
+				<div class="col s6 m3" id="talla">
+					<div class="circleIndicadores deep-purple accent-3">
+						<div style="" class="tituloPequeno">
+							<h5>Talla</h5>
 						</div>
+						<span style="" class=" pull-center white-text spanPequeno">
+							80 cm.
+						</span>
+						<i  style="color:#90caf9 " class="fa fa-stethoscope iconoPequeno" aria-hidden="true"></i>
+					</div>
+				</div>
+				<div class="col s6 m3" id="porcentGrasa">
+					<div class="circleIndicadores   yellow accent-4">
+						<div style="left: 21px;" class="tituloPequeno">
+							<h5>Grasa</h5>
+						</div>
+						<span style="left:29px;"  class="spanPequeno pull-center white-text">
+							15 %
+						</span>
+						<i style="color:#ff6f00;left:40px" class="fa fa-heartbeat iconoPequeno" aria-hidden="true"></i>
+					</div>
+				</div>
+				<div class="col s6 m3" id="porcentMusculo">
+					<div class="circleIndicadores   red darken-4">
+						<div style="left:23px;" class="tituloPequeno">
+							<h5>Musc.</h5>
+						</div>
+						<span style="left:30px;" class="spanPequeno pull-center white-text">
+							70 %
+						</span>
+						<i style="color:black;left:41px" class="fa fa-hand-rock-o iconoPequeno" aria-hidden="true"></i>
+					</div>
+				</div>
+				<div class="col s6 m3" id="porcentAgua">
+					<div class="circleIndicadores  light-blue darken-1">
+						<div class="tituloPequeno">
+							<h5>Agua</h5>
+						</div>
+						<span style="left:28px" class="pull-center white-text spanPequeno">
+							15 %
+						</span>
+						<i style="color:#1de9b6" class="fa fa-tint iconoPequeno" aria-hidden="true"></i>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-md-12" id="menu">
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-12" id="subcontent">
-			</div>
+		<div id="historico" class="">
+			<h5>Historico</h5>
+			<div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s2"><a class="active" href="#chart">General</a></li>
+        <li class="tab col s2"><a  href="#chart0">Peso</a></li>
+        <li class="tab col s2"><a href="#chart1">Talla</a></li>
+        <li class="tab col s2"><a href="#chart2">Grasa</a></li>
+				<li class="tab col s2"><a href="#chart3">Musculo</a></li>
+				<li class="tab col s2"><a href="#chart4">Agua</a></li>
+      </ul>
+    </div>
+			<div style="display:block" id="chart">{{createChart}}</div>
+			<div style="display:none" id="chart0">{{createChart0}}</div>
+			<div style="display:none" id="chart1">{{createChart1}}</div>
+			<div style="display:none" id="chart2">{{createChart2}}</div>
+			<div style="display:none" id="chart3">{{createChart3}}</div>
+			<div style="display:none" id="chart4">Soon!</div>
 		</div>
 	</div>
-</template>
-
+	</template>
