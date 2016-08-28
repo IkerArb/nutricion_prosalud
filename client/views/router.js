@@ -72,7 +72,7 @@ this.firstGrantedRoute = function(preferredRoute) {
 	}
 
 	return "";
-}
+};
 
 // this function returns true if user is in role allowed to access given route
 this.routeGranted = function(routeName) {

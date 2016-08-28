@@ -1,23 +1,580 @@
 <template name="UserNutriologo">
 	<div class="page-container">
-		<div class="row">
-			<div class="col-md-12" id="content">
-				<div class="row" id="title_row">
-					<div class="col-md-12">
-						<div id="page_menu" class="pull-right">
+		<!-- <div class="fixed-action-btn horizontal" style="top: 100px; right: 40px;">
+	    <a data-target="newUser" class="modal-trigger btn-floating btn-large pink accent-4" >
+	      <i class="large material-icons">add</i>
+	    </a>
+			<ul>
+	      <li><a class="btn-floating red tooltipped" data-position="bottom" data-delay="50" data-tooltip="Crea nuevo estudio"><i class="material-icons">insert_chart</i></a></li>
+	      <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
+	      <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+	      <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+    </ul>
+	  </div> -->
+		<div class="row z-depth-1" style="margin-top:10px">
+	    <div class="col s12">
+	      <ul class="tabs">
+	        <li class="tab col s3"><a href="#resumen">Resumen</a></li>
+	        <li class="tab col s3"><a href="#menuUser">Menu</a></li>
+	        <li class="tab col s3"><a href="#meals">Meals</a></li>
+					<li class="tab col s3"><a href="#mensajes">Mensajes</a></li>
+	      </ul>
+	    </div>
+	    <div id="resumen" class="col s12">
+				{{>PerfilUserNutriologo}}
+			</div>
+	    <div id="menuUser" class="col s12">
+				{{>PerfilUserMenu}}
+			</div>
+	    <div id="meals" class="col s12">
+				{{>PerfilUserMeals}}
+			</div>
+			<div id="mensajes" class="col s12">
+				{{>PerfilUserMensajes}}
+			</div>
+  </div>
+	</div>
+</template>
+
+<template name="PerfilUserNutriologo">
+	<div class="">
+		<div class="actualIndicadores">
+			<div class="row">
+				<h3 id="page_title" class="pull-left">
+					{{name}}
+				</h3>
+				<h5 class="pull-left">
+					{{fechaNacimiento}}
+				</h5>
+			</div>
+			<div id="peso">
+	    	<div class="circleIndicadores pink darken-4">
+					<div style="" class="tituloGrande">
+						<h4>Peso</h4>
+					</div>
+	        <span style="" class="pull-center white-text spanGrande">
+						70 Kgs.
+	        </span>
+					<i style="" class="fa fa-balance-scale iconoGrande" aria-hidden="true"></i>
+	      </div>
+			</div>
+			<div id="indicadores" class="row">
+				<div class="col s6 m3" id="talla">
+					<div class="circleIndicadores deep-purple accent-3">
+						<div style="" class="tituloPequeno">
+							<h5>Talla</h5>
 						</div>
+						<span style="" class=" pull-center white-text spanPequeno">
+							80 cm.
+						</span>
+						<i  style="color:#90caf9 " class="fa fa-stethoscope iconoPequeno" aria-hidden="true"></i>
+					</div>
+				</div>
+				<div class="col s6 m3" id="porcentGrasa">
+					<div class="circleIndicadores   yellow accent-4">
+						<div style="left: 21px;" class="tituloPequeno">
+							<h5>Grasa</h5>
+						</div>
+						<span style="left:29px;"  class="spanPequeno pull-center white-text">
+							15 %
+						</span>
+						<i style="color:#ff6f00;left:40px" class="fa fa-heartbeat iconoPequeno" aria-hidden="true"></i>
+					</div>
+				</div>
+				<div class="col s6 m3" id="porcentMusculo">
+					<div class="circleIndicadores   red darken-4">
+						<div style="left:23px;" class="tituloPequeno">
+							<h5>Musc.</h5>
+						</div>
+						<span style="left:30px;" class="spanPequeno pull-center white-text">
+							70 %
+						</span>
+						<i style="color:black;left:41px" class="fa fa-hand-rock-o iconoPequeno" aria-hidden="true"></i>
+					</div>
+				</div>
+				<div class="col s6 m3" id="porcentAgua">
+					<div class="circleIndicadores  light-blue darken-1">
+						<div class="tituloPequeno">
+							<h5>Agua</h5>
+						</div>
+						<span style="left:28px" class="pull-center white-text spanPequeno">
+							15 %
+						</span>
+						<i style="color:#1de9b6" class="fa fa-tint iconoPequeno" aria-hidden="true"></i>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-md-12" id="menu">
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-12" id="subcontent">
-			</div>
+		<div id="historico" class="">
+			<h5>Historico</h5>
+			<div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s2"><a class="active" href="#chart">General</a></li>
+        <li class="tab col s2"><a  href="#chart0">Peso</a></li>
+        <li class="tab col s2"><a href="#chart1">Talla</a></li>
+        <li class="tab col s2"><a href="#chart2">Grasa</a></li>
+				<li class="tab col s2"><a href="#chart3">Musculo</a></li>
+				<li class="tab col s2"><a href="#chart4">Agua</a></li>
+      </ul>
+    </div>
+			<div style="display:block" id="chart">{{createChart}}</div>
+			<div style="display:none" id="chart0">{{createChart0}}</div>
+			<div style="display:none" id="chart1">{{createChart1}}</div>
+			<div style="display:none" id="chart2">{{createChart2}}</div>
+			<div style="display:none" id="chart3">{{createChart3}}</div>
+			<div style="display:none" id="chart4">Soon!</div>
 		</div>
 	</div>
 </template>
 
+<template name="PerfilUserMenu">
+	<ul class="collapsible popout" data-collapsible="expandable">
+
+		<!-- Empieza colapsable desayuno -->
+    <li>
+      <div class="collapsible-header">Desayuno</div>
+      <div class="collapsible-body">
+				<div class="collapsible-body-interno">
+					<div class="row">
+						<h5>Ración</h5>
+						<div class="col s10 offset-s2">
+							<textarea id="racion-desayuno" class="materialize-textarea" value="1 taza de leche descremada
+		1 taza de fresa rebanada
+		1/2 taza de cereal sin azúcar
+		1 C de crema ligera\n"></textarea>
+						</div>
+					</div>
+					<div class="row">
+						<h5>Platillos</h5>
+						<div class="row">
+							<a class="waves-effect waves-light btn forma-btn pull-right" id="boton-nuevo-desayuno">Nuevo Platillo</a>
+						</div>
+						<div class="row hide" id="forma-nuevo-desayuno">
+							<h5>Nuevo Platillo</h5>
+			        <div class="input-field col s6">
+								<p class="no-padding">Titulo Platillo</p>
+			          <input placeholder="Fresas con crema" id="titulo-plat-desayuno" type="text" class="validate">
+			        </div>
+			        <div class="input-field col s6">
+								<p class="no-padding">Detalle Platillo</p>
+			           <textarea id="detalle-plat-desayuno" class="materialize-textarea" placeholder="1 taza de leche descremada..."></textarea>
+			        </div>
+							<button class="btn waves-effect waves-light pull-right">
+								Submit<i class="material-icons right">send</i>
+						  </button>
+						</div>
+						<table class="bordered centered highlight">
+						  <thead>
+						    <tr>
+						      <th data-field="titulo">Titulo</th>
+						      <th data-field="detalle">Detalle Platillo</th>
+						      <th data-field="eliminar">Eliminar</th>
+						    </tr>
+						  </thead>
+
+						  <tbody>
+						    <tr>
+						      <td>
+										<input id="_titulo" type="text" class="validate changeTitulo" value="Cereal con leche y fresas con crema" required>
+									</td>
+						      <td>
+										<textarea id="_detalle" class="materialize-textarea validate changeDetalle" value="1 taza de leche descremada
+	1 taza de fresa rebanada
+	1/2 taza de cereal sin azúcar
+	1 C de crema ligera"></textarea>
+									</td>
+									<td>
+										<button class="btn waves-effect waves-light red">
+											Eliminar<i class="material-icons right">delete</i>
+									  </button>
+									</td>
+						    </tr>
+						  </tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+    </li>
+		<!-- Termina colapsable desayuno -->
+
+		<!-- Empieza colapsable media-mañana -->
+    <li>
+      <div class="collapsible-header">Media Mañana</div>
+      <div class="collapsible-body">
+				<div class="collapsible-body-interno">
+					<div class="row">
+						<h5>Ración</h5>
+						<div class="col s10 offset-s2">
+							<textarea id="racion-media-mañana" class="materialize-textarea" value="1 taza de leche descremada
+		1 taza de fresa rebanada
+		1/2 taza de cereal sin azúcar
+		1 C de crema ligera\n"></textarea>
+						</div>
+					</div>
+					<div class="row">
+						<h5>Platillos</h5>
+						<div class="row">
+							<a class="waves-effect waves-light btn forma-btn pull-right" id="boton-nuevo-media-mañana">Nuevo Platillo</a>
+						</div>
+						<div class="row hide" id="forma-nuevo-media-mañana">
+			        <div class="input-field col s6">
+								<p class="no-padding">Titulo Platillo</p>
+			          <input placeholder="Fresas con crema" id="titulo-plat-media-mañana" type="text" class="validate">
+			        </div>
+			        <div class="input-field col s6">
+								<p class="no-padding">Detalle Platillo</p>
+			           <textarea id="detalle-plat-media-mañana" class="materialize-textarea" placeholder="1 taza de leche descremada..."></textarea>
+			        </div>
+							<button class="btn waves-effect waves-light">
+								Submit<i class="material-icons right">send</i>
+						  </button>
+			      </div>
+						<table class="bordered centered highlight">
+						  <thead>
+						    <tr>
+						      <th data-field="titulo">Titulo</th>
+						      <th data-field="detalle">Detalle Platillo</th>
+						      <th data-field="eliminar">Eliminar</th>
+						    </tr>
+						  </thead>
+
+						  <tbody>
+						    <tr>
+						      <td>
+										<input id="_titulo" type="text" class="validate changeTitulo" value="Cereal con leche y fresas con crema" required>
+									</td>
+						      <td>
+										<textarea id="_detalle" class="materialize-textarea validate changeDetalle" value="1 taza de leche descremada
+	1 taza de fresa rebanada
+	1/2 taza de cereal sin azúcar
+	1 C de crema ligera"></textarea>
+									</td>
+									<td>
+										<button class="btn waves-effect waves-light red">
+											Eliminar<i class="material-icons right">delete</i>
+									  </button>
+									</td>
+						    </tr>
+						  </tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+    </li>
+		<!-- Termina colapsable media-mañana -->
+
+		<!-- Empieza colapsable comida -->
+    <li>
+      <div class="collapsible-header">Comida</div>
+      <div class="collapsible-body">
+				<div class="collapsible-body-interno">
+					<div class="row">
+						<h5>Ración</h5>
+						<div class="col s10 offset-s2">
+							<textarea id="racion-comida" class="materialize-textarea" value="1 taza de leche descremada
+		1 taza de fresa rebanada
+		1/2 taza de cereal sin azúcar
+		1 C de crema ligera\n"></textarea>
+						</div>
+					</div>
+					<div class="row">
+						<h5>Platillos</h5>
+						<div class="row">
+							<a class="waves-effect waves-light btn forma-btn pull-right" id="boton-nuevo-comida">Nuevo Platillo</a>
+						</div>
+						<div class="row hide" id="forma-nuevo-comida">
+			        <div class="input-field col s6">
+								<p class="no-padding">Titulo Platillo</p>
+			          <input placeholder="Fresas con crema" id="titulo-plat-comida" type="text" class="validate">
+			        </div>
+			        <div class="input-field col s6">
+								<p class="no-padding">Detalle Platillo</p>
+			           <textarea id="detalle-plat-comida" class="materialize-textarea" placeholder="1 taza de leche descremada..."></textarea>
+			        </div>
+							<button class="btn waves-effect waves-light">
+								Submit<i class="material-icons right">send</i>
+						  </button>
+			      </div>
+						<table class="bordered centered highlight">
+						  <thead>
+						    <tr>
+						      <th data-field="titulo">Titulo</th>
+						      <th data-field="detalle">Detalle Platillo</th>
+						      <th data-field="eliminar">Eliminar</th>
+						    </tr>
+						  </thead>
+
+						  <tbody>
+						    <tr>
+						      <td>
+										<input id="_titulo" type="text" class="validate changeTitulo" value="Cereal con leche y fresas con crema" required>
+									</td>
+						      <td>
+										<textarea id="_detalle" class="materialize-textarea validate changeDetalle" value="1 taza de leche descremada
+	1 taza de fresa rebanada
+	1/2 taza de cereal sin azúcar
+	1 C de crema ligera"></textarea>
+									</td>
+									<td>
+										<button class="btn waves-effect waves-light red">
+											Eliminar<i class="material-icons right">delete</i>
+									  </button>
+									</td>
+						    </tr>
+						  </tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+    </li>
+		<!-- Termina colapsable comida -->
+
+		<!-- Empieza colapsable media-tarde -->
+		<li>
+      <div class="collapsible-header">Media Tarde</div>
+      <div class="collapsible-body">
+				<div class="collapsible-body-interno">
+					<div class="row">
+						<h5>Ración</h5>
+						<textarea id="racion-media-tarde" class="materialize-textarea" value="1 taza de leche descremada
+	1 taza de fresa rebanada
+	1/2 taza de cereal sin azúcar
+	1 C de crema ligera\n"></textarea>
+					</div>
+					<div class="row">
+						<h5>Platillos</h5>
+						<div class="row">
+							<a class="waves-effect waves-light btn forma-btn pull-right" id="boton-nuevo-media-tarde">Nuevo Platillo</a>
+						</div>
+						<div class="row hide" id="forma-nuevo-media-tarde">
+			        <div class="input-field col s6">
+								<p class="no-padding">Titulo Platillo</p>
+			          <input placeholder="Fresas con crema" id="titulo-plat-media-tarde" type="text" class="validate">
+			        </div>
+			        <div class="input-field col s6">
+								<p class="no-padding">Detalle Platillo</p>
+								<textarea id="detalle-plat-media-tarde" class="materialize-textarea" placeholder="1 taza de leche descremada..."></textarea>
+			        </div>
+							<button class="btn waves-effect waves-light">
+								Submit<i class="material-icons right">send</i>
+						  </button>
+			      </div>
+						<table class="bordered centered highlight">
+						  <thead>
+						    <tr>
+						      <th data-field="titulo">Titulo</th>
+						      <th data-field="detalle">Detalle Platillo</th>
+						      <th data-field="eliminar">Eliminar</th>
+						    </tr>
+						  </thead>
+
+						  <tbody>
+						    <tr>
+						      <td>
+										<input id="_titulo" type="text" class="validate changeTitulo" value="Cereal con leche y fresas con crema" required>
+									</td>
+						      <td>
+										<textarea id="_detalle" class="materialize-textarea validate changeDetalle" value="1 taza de leche descremada
+	1 taza de fresa rebanada
+	1/2 taza de cereal sin azúcar
+	1 C de crema ligera"></textarea>
+									</td>
+									<td>
+										<button class="btn waves-effect waves-light red">
+											Eliminar<i class="material-icons right">delete</i>
+									  </button>
+									</td>
+						    </tr>
+						  </tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+    </li>
+		<!-- Termina colapsable media-tarde -->
+
+		<!-- Empieza colapsable cena -->
+		<li>
+      <div class="collapsible-header">Cena</div>
+      <div class="collapsible-body">
+				<div class="collapsible-body-interno">
+					<div class="row">
+						<h5>Ración</h5>
+						<textarea id="racion-cena" class="materialize-textarea" value="1 taza de leche descremada
+	1 taza de fresa rebanada
+	1/2 taza de cereal sin azúcar
+	1 C de crema ligera\n"></textarea>
+					</div>
+					<div class="row">
+						<h5>Platillos</h5>
+						<div class="row">
+							<a class="waves-effect waves-light btn forma-btn pull-right" id="boton-nuevo-cena">Nuevo Platillo</a>
+						</div>
+						<div class="row hide" id="forma-nuevo-cena">
+			        <div class="input-field col s6">
+								<p class="no-padding">Titulo Platillo</p>
+			          <input placeholder="Fresas con crema" id="titulo-plat-cena" type="text" class="validate">
+			        </div>
+			        <div class="input-field col s6">
+								<p class="no-padding">Detalle Platillo</p>
+			           <textarea id="detalle-plat-cena" class="materialize-textarea" placeholder="1 taza de leche descremada..."></textarea>
+			        </div>
+							<button class="btn waves-effect waves-light">
+								Submit<i class="material-icons right">send</i>
+						  </button>
+			      </div>
+						<table class="bordered centered highlight">
+						  <thead>
+						    <tr>
+						      <th data-field="titulo">Titulo</th>
+						      <th data-field="detalle">Detalle Platillo</th>
+						      <th data-field="eliminar">Eliminar</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						    <tr>
+						      <td>
+										<input id="_titulo" type="text" class="validate changeTitulo" value="Cereal con leche y fresas con crema" required>
+									</td>
+						      <td>
+										<textarea id="_detalle" class="materialize-textarea validate changeDetalle" value="1 taza de leche descremada
+	1 taza de fresa rebanada
+	1/2 taza de cereal sin azúcar
+	1 C de crema ligera"></textarea>
+									</td>
+									<td>
+										<button class="btn waves-effect waves-light red">
+											Eliminar<i class="material-icons right">delete</i>
+									  </button>
+									</td>
+						    </tr>
+						  </tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+    </li>
+		<!-- Termina colapsable cena -->
+  </ul>
+</template>
+
+
+<template name="PerfilUserMeals">
+	<div class="col s6 offset-s3 m4 offset-m4">
+		<input type="date" class="datepicker center-align">
+	</div>
+	<table class="bordered centered highlight">
+	  <thead>
+	    <tr>
+	      <th data-field="id">Tiempo</th>
+	      <th data-field="titulo">Comida</th>
+	      <th data-field="descripcion">Descripcion</th>
+				<th data-field="racion">Ración</th>
+	    </tr>
+	  </thead>
+
+	  <tbody>
+	    <tr>
+	      <td>Desayuno</td>
+	      <td>Cereal con leche y fresas con crema</td>
+	      <td>
+					1 taza de leche descremada<br>
+					1 taza de fresa rebanada <br>
+					1/2 taza de cereal sin azúcar <br>
+					1 C de crema ligera <br>
+				</td>
+				<td>
+					1 Leche <br />
+					1 Fruta <br />
+					1 Cereal S/G <br />
+					1 Grasa <br />
+				</td>
+	    </tr>
+	    <tr>
+	      <td>Media Mañana</td>
+				<td>Cereal con leche y fresas con crema</td>
+	      <td>
+					1 taza de leche descremada<br>
+					1 taza de fresa rebanada <br>
+					1/2 taza de cereal sin azúcar <br>
+					1 C de crema ligera <br>
+				</td>
+				<td>
+					1 Leche <br />
+					1 Fruta <br />
+					1 Cereal S/G <br />
+					1 Grasa <br />
+				</td>
+	    </tr>
+	    <tr>
+	      <td>Comida</td>
+				<td>Cereal con leche y fresas con crema</td>
+	      <td>
+					1 taza de leche descremada<br>
+					1 taza de fresa rebanada <br>
+					1/2 taza de cereal sin azúcar <br>
+					1 C de crema ligera <br>
+				</td>
+				<td>
+					1 Leche <br />
+					1 Fruta <br />
+					1 Cereal S/G <br />
+					1 Grasa <br />
+				</td>
+	    </tr>
+			<tr>
+	      <td>Media Tarde</td>
+				<td>Cereal con leche y fresas con crema</td>
+	      <td>
+					1 taza de leche descremada<br>
+					1 taza de fresa rebanada <br>
+					1/2 taza de cereal sin azúcar <br>
+					1 C de crema ligera <br>
+				</td>
+				<td>
+					1 Leche <br />
+					1 Fruta <br />
+					1 Cereal S/G <br />
+					1 Grasa <br />
+				</td>
+	    </tr>
+			<tr>
+	      <td>Cena</td>
+				<td>Cereal con leche y fresas con crema</td>
+	      <td>
+					1 taza de leche descremada<br>
+					1 taza de fresa rebanada <br>
+					1/2 taza de cereal sin azúcar <br>
+					1 C de crema ligera <br>
+				</td>
+				<td>
+					1 Leche <br />
+					1 Fruta <br />
+					1 Cereal S/G <br />
+					1 Grasa <br />
+				</td>
+	    </tr>
+	  </tbody>
+	</table>
+</template>
+
+<template name="PerfilUserMensajes">
+	<div class="row no-margin-bottom chat">
+		<div class="col s12">
+			<ul class="list-group">
+				<li class="list-group-item left-align"><h6>Juan Perez</h6><img src="images/ui-noimg.png" class="circle" style="width:20px"> ¿Hola cómo estas?</li>
+				<li class="list-group-item right-align"><h6>Anna Gaby Bremer</h6>bien ¿y tú? <img src="images/ui-noimg.png" class="circle" style="width:20px"></li>
+				<li class="list-group-item left-align"><h6>Juan Perez</h6><img src="images/ui-noimg.png" class="circle" style="width:20px"> Tengo un perro que quiero dar en adopción y quería ver si tú me podrías ayudar</li>
+				<li class="list-group-item left-align"><h6>Juan Perez</h6><img src="images/ui-noimg.png" class="circle" style="width:20px"> Tengo un perro que quiero dar en adopción y quería ver si tú me podrías ayudar</li>
+				<li class="list-group-item left-align"><h6>Juan Perez</h6><img src="images/ui-noimg.png" class="circle" style="width:20px"> Tengo un perro que quiero dar en adopción y quería ver si tú me podrías ayudar</li>
+			</ul>
+		</div>
+	</div>
+	<div class="col s12">
+		<div class="row no-margin-bottom">
+			<div class="input-field col s12">
+				<div class="card-panel white no-margin-bottom"><input placeholder="Escribe aquí tu Respuesta" id="respuesta" type="text"></div>
+			</div>
+		</div>
+	</div>
+</template>
