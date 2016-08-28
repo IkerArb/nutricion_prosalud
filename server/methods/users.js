@@ -74,5 +74,35 @@ Meteor.methods({
     Meteor.users.update({_id:userId},{$set:{
       'profile.birthDay':newBirthDay
     }});
+  },
+
+  cambiaAgregaRacionDesayuno: function(userId,racion){
+    Meteor.users.update({_id:userId},{$set:{
+      'profile.menu.desayuno.racion': racion
+    }});
+  },
+
+  cambiaAgregaRacionMediaMañana: function(userId,racion){
+    Meteor.users.update({_id:userId},{$set:{
+      'profile.menu.media_mañana.racion': racion
+    }});
+  },
+
+  cambiaAgregaRacionComida: function(userId,racion){
+    Meteor.users.update({_id:userId},{$set:{
+      'profile.menu.comida.racion': racion
+    }});
+  },
+
+  cambiaAgregaRacionMediaTarde: function(userId,racion){
+    Meteor.users.update({_id:userId},{$set:{
+      'profile.menu.media_tarde.racion': racion
+    }});
+  },
+
+  cambiaAgregaRacionCena: function(userId,racion){
+    Meteor.users.update({_id:userId},{$set:{
+      'profile.menu.cena.racion': racion
+    }});
   }
 });

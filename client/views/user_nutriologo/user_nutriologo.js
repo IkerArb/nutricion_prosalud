@@ -276,7 +276,21 @@ Template.PerfilUserMenu.rendered = function(){
 };
 
 Template.PerfilUserMenu.helpers({
-
+	racionDesayuno: function(){
+		return Meteor.users.findOne({_id: this.params._id}).profile.menu.desayuno.racion;
+	},
+	racionMediaMañana: function(){
+		return Meteor.users.findOne({_id: this.params._id}).profile.menu.media_mañana.racion;
+	},
+	racionComida: function(){
+		return Meteor.users.findOne({_id: this.params._id}).profile.menu.comida.racion;
+	},
+	racionMediaTarde: function(){
+		return Meteor.users.findOne({_id: this.params._id}).profile.menu.media_tarde.racion;
+	},
+	racionCena: function(){
+		return Meteor.users.findOne({_id: this.params._id}).profile.menu.cena.racion;
+	}
 });
 
 Template.PerfilUserMenu.events({
@@ -294,6 +308,26 @@ Template.PerfilUserMenu.events({
 	},
 	'click #boton-nuevo-cena': function(e){
 		$("#forma-nuevo-cena").removeClass('hide');
+	},
+	'change #racion-desayuno': function(e){
+		var racion = e.target.value;
+		Meteor.call("cambiaAgregaRacionDesayuno",this.params._id,racion);
+	},
+	'change #racion-media-mañana': function(e){
+		var racion = e.target.value;
+		Meteor.call("cambiaAgregaRacionMediaMañana",this.params._id,racion);
+	},
+	'change #racion-comida': function(e){
+		var racion = e.target.value;
+		Meteor.call("cambiaAgregaRacionComida",this.params._id,racion);
+	},
+	'change #racion-media-tarde': function(e){
+		var racion = e.target.value;
+		Meteor.call("cambiaAgregaRacionMediaTarde",this.params._id,racion);
+	},
+	'change #racion-cena': function(e){
+		var racion = e.target.value;
+		Meteor.call("cambiaAgregaRacionCena",this.params._id,racion);
 	}
 });
 

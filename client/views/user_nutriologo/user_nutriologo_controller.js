@@ -1,6 +1,6 @@
 this.UserNutriologoController = RouteController.extend({
 	template: "UserNutriologo",
-	
+
 
 	yieldTemplates: {
 		/*YIELD_TEMPLATES*/
@@ -16,10 +16,11 @@ this.UserNutriologoController = RouteController.extend({
 	},
 
 	isReady: function() {
-		
+
 
 		var subs = [
-			Meteor.subscribe("estudios_user_nutriologo")
+			Meteor.subscribe("estudios_user_nutriologo"),
+			Meteor.subscribe("info_user",this.params._id)
 		];
 		var ready = true;
 		_.each(subs, function(sub) {
@@ -30,20 +31,21 @@ this.UserNutriologoController = RouteController.extend({
 	},
 
 	data: function() {
-		
+
 
 		var data = {
 			params: this.params || {},
-			estudios_user_nutriologo: Estudios.find({}, {})
+			estudios_user_nutriologo: Estudios.find({}, {}),
+			info_user: Meteor.users.findOne()
 		};
-		
 
-		
+
+
 
 		return data;
 	},
 
 	onAfterAction: function() {
-		
+
 	}
 });
