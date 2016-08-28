@@ -1,5 +1,6 @@
 Template.UserNutriologo.rendered = function() {
 	$('ul.tabs').tabs();
+	$('.tooltipped').tooltip({delay: 50});
 };
 
 Template.UserNutriologo.events({
@@ -268,3 +269,83 @@ Template.PerfilUserNutriologo.helpers({
   }
 
 });
+
+Template.PerfilUserMenu.rendered = function(){
+	$('.collapsible').collapsible();
+	$('.materialize-textarea').trigger('autoresize');
+};
+
+Template.PerfilUserMenu.helpers({
+
+});
+
+Template.PerfilUserMenu.events({
+	'click #boton-nuevo-desayuno': function(e){
+		$("#forma-nuevo-desayuno").removeClass('hide');
+	},
+	'click #boton-nuevo-media-mañana': function(e){
+		$("#forma-nuevo-media-mañana").removeClass('hide');
+	},
+	'click #boton-nuevo-comida': function(e){
+		$("#forma-nuevo-comida").removeClass('hide');
+	},
+	'click #boton-nuevo-media-tarde': function(e){
+		$("#forma-nuevo-media-tarde").removeClass('hide');
+	},
+	'click #boton-nuevo-cena': function(e){
+		$("#forma-nuevo-cena").removeClass('hide');
+	}
+});
+
+Template.PerfilUserMeals.rendered = function() {
+	$('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15, // Creates a dropdown of 15 years to control year
+		max: Date.now(),
+	});
+	var today = new Date();
+	var month;
+	switch (today.getMonth()) {
+    case 0:
+        month = " January";
+        break;
+    case 1:
+        month = " February";
+        break;
+    case 2:
+        month = " March";
+        break;
+    case 3:
+        month = " April";
+        break;
+    case 4:
+        month = " May";
+        break;
+    case 5:
+        month = " June";
+        break;
+    case 6:
+        month = " July";
+				break;
+		case 7:
+        month = " August";
+        break;
+    case 8:
+        month = " September";
+        break;
+    case 9:
+        month = " October";
+        break;
+    case 10:
+        month = " November";
+        break;
+    case 11:
+        month = " December";
+	}
+	$('.datepicker').val(today.getDate()+month+","+today.getFullYear());
+	$(".picker__day--today").addClass("picker__day--selected picker__day--highlighted");
+	$(".picker__day--today").attr("aria-selected",true);
+	$(".picker__day--today").attr("aria-activedescendant",true);
+	// console.log(Date().toString());
+	// $('.datepicker').val(Date().toString());
+};
