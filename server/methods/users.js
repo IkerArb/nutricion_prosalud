@@ -104,5 +104,60 @@ Meteor.methods({
     Meteor.users.update({_id:userId},{$set:{
       'profile.menu.cena.racion': racion
     }});
+  },
+
+  agregaPlatilloDesayuno: function(userId,titulo,detalle){
+    var id = new Mongo.ObjectID;
+    var path = "profile.menu.desayuno.platillos."+id.toHexString();
+    var options = {};
+    options[path] = {
+      "titulo" : titulo,
+      "detalle": detalle
+    };
+    Meteor.users.update({_id:userId},{$set:options});
+  },
+
+  agregaPlatilloMediaMañana: function(userId,titulo,detalle){
+    var id = new Mongo.ObjectID;
+    var path = "profile.menu.media-mañana.platillos."+id.toHexString();
+    var options = {};
+    options[path] = {
+      "titulo" : titulo,
+      "detalle": detalle
+    };
+    Meteor.users.update({_id:userId},{$set:options});
+  },
+
+  agregaPlatilloComida: function(userId,titulo,detalle){
+    var id = new Mongo.ObjectID;
+    var path = "profile.menu.comida.platillos."+id.toHexString();
+    var options = {};
+    options[path] = {
+      "titulo" : titulo,
+      "detalle": detalle
+    };
+    Meteor.users.update({_id:userId},{$set:options});
+  },
+
+  agregaPlatilloMediaTarde: function(userId,titulo,detalle){
+    var id = new Mongo.ObjectID;
+    var path = "profile.menu.media-tarde.platillos."+id.toHexString();
+    var options = {};
+    options[path] = {
+      "titulo" : titulo,
+      "detalle": detalle
+    };
+    Meteor.users.update({_id:userId},{$set:options});
+  },
+
+  agregaPlatilloCena: function(userId,titulo,detalle){
+    var id = new Mongo.ObjectID;
+    var path = "profile.menu.cena.platillos."+id.toHexString();
+    var options = {};
+    options[path] = {
+      "titulo" : titulo,
+      "detalle": detalle
+    };
+    Meteor.users.update({_id:userId},{$set:options});
   }
 });

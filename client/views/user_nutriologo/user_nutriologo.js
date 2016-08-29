@@ -273,6 +273,7 @@ Template.PerfilUserNutriologo.helpers({
 Template.PerfilUserMenu.rendered = function(){
 	$('.collapsible').collapsible();
 	$('.materialize-textarea').trigger('autoresize');
+	
 };
 
 Template.PerfilUserMenu.helpers({
@@ -308,6 +309,36 @@ Template.PerfilUserMenu.events({
 	},
 	'click #boton-nuevo-cena': function(e){
 		$("#forma-nuevo-cena").removeClass('hide');
+	},
+	'click #send-nuevo-desayuno': function(e){
+		var titulo = $("#titulo-plat-desayuno").val();
+		var detalle = $("#detalle-plat-desayuno").val();
+		Meteor.call("agregaPlatilloDesayuno",this.params._id,titulo,detalle);
+		$("#forma-nuevo-desayuno").addClass('hide');
+	},
+	'click #send-nuevo-media-mañana': function(e){
+		var titulo = $("#titulo-plat-media-mañana").val();
+		var detalle = $("#detalle-plat-media-mañana").val();
+		Meteor.call("agregaPlatilloMediaMañana",this.params._id,titulo,detalle);
+		$("#forma-nuevo-media-mañana").addClass('hide');
+	},
+	'click #send-nuevo-comida': function(e){
+		var titulo = $("#titulo-plat-comida").val();
+		var detalle = $("#detalle-plat-comida").val();
+		Meteor.call("agregaPlatilloComida",this.params._id,titulo,detalle);
+		$("#forma-nuevo-comida").addClass('hide');
+	},
+	'click #send-nuevo-media-tarde': function(e){
+		var titulo = $("#titulo-plat-media-tarde").val();
+		var detalle = $("#detalle-plat-media-tarde").val();
+		Meteor.call("agregaPlatilloMediaTarde",this.params._id,titulo,detalle);
+		$("#forma-nuevo-media-tarde").addClass('hide');
+	},
+	'click #send-nuevo-cena': function(e){
+		var titulo = $("#titulo-plat-cena").val();
+		var detalle = $("#detalle-plat-cena").val();
+		Meteor.call("agregaPlatilloCena",this.params._id,titulo,detalle);
+		$("#forma-nuevo-cena").addClass('hide');
 	},
 	'change #racion-desayuno': function(e){
 		var racion = e.target.value;
