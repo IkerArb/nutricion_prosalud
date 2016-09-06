@@ -38,10 +38,7 @@
 	              <p>Horario: <strong>8AM - 10AM</strong></p>
 								<p>
 									Raciones: <br />
-									1 Leche <br />
-									1 Fruta <br />
-									1 Cereal S/G <br />
-									1 Grasa <br />
+									{{racionDesayuno}}
 								</p>
 	            </div>
 	            <div class="card-action">
@@ -55,70 +52,25 @@
 						    <!-- <div class="carousel-fixed-item center">
 						      <a class="btn waves-effect white grey-text darken-text-2">button</a>
 						    </div> -->
-						    <div class="carousel-item red white-text" href="#one!">
-						      <h2>Cereal con leche y fresas con crema</h2>
-						      <p class="white-text">1 taza de leche descremada</p>
-									<p class="white-text">1 taza de fresa rebanada</p>
-									<p class="white-text">1/2 taza de cereal sin azúcar</p>
-									<p class="white-text">1 C de crema ligera</p>
-									<a class="btn waves-effect white grey-text darken-text-2">comí esto</a>
-						    </div>
-						    <div class="carousel-item amber white-text" href="#two!">
-						      <h2>Pan tostado y yogurt</h2>
-						      <p class="white-text">3/4 taza de yogurt light</p>
-									<p class="white-text">1 taza de papaya picada</p>
-									<p class="white-text">1 rebanada de pan tostado</p>
-									<p class="white-text">1 1/2 c de mantequilla sin sal</p>
-									<a class="btn waves-effect white grey-text darken-text-2">comí esto</a>
-						    </div>
-						    <div class="carousel-item green white-text" href="#three!">
-						      <h2>Avena con melón</h2>
-						      <p class="white-text">1 taza de leche descremada</p>
-									<p class="white-text">1 taza de melón picado</p>
-									<p class="white-text">3/4 taza de avena cocida</p>
-									<p class="white-text">1 1/2 C de coco rallado</p>
-									<a class="btn waves-effect white grey-text darken-text-2">comí esto</a>
-						    </div>
-						    <div class="carousel-item blue white-text" href="#four!">
-						      <h2>Licuado de melón con mini sándwich con queso crema</h2>
-						      <p class="white-text">1 taza de leche descremada</p>
-									<p class="white-text">1 taza de melón picado</p>
-									<p class="white-text">1 rebanada de pan integral</p>
-									<p class="white-text">1 C de queso crema</p>
-									<a class="btn waves-effect white grey-text darken-text-2">comí esto</a>
-						    </div>
-								<div class="carousel-item purple white-text" href="#five!">
-						      <h2>Melón con yogurt</h2>
-						      <p class="white-text">3/4 taza de yogurt light</p>
-									<p class="white-text">1 taza de melón picado</p>
-									<p class="white-text">3 C de granola baja en grasa</p>
-									<p class="white-text">1 1/2 C de coco rallado</p>
-									<a class="btn waves-effect white grey-text darken-text-2">comí esto</a>
-						    </div>
-						    <div class="carousel-item cyan white-text" href="#six!">
-						      <h2>Yogurt con manzana y crema ligera</h2>
-						      <p class="white-text">3/4 taza de yogurt light</p>
-									<p class="white-text">1/2 taza de manzana picada</p>
-									<p class="white-text">1 rebanada de pan integral</p>
-									<p class="white-text">1 C de crema ligera</p>
-									<a class="btn waves-effect white grey-text darken-text-2">comí esto</a>
-						    </div>
-								<div class="carousel-item pink white-text" href="#seven!">
-						      <h2>Avena con manzana y coco</h2>
-						      <p class="white-text">1 taza de leche descremada</p>
-									<p class="white-text">1/2 taza de manzana picado</p>
-									<p class="white-text">3/4 taza de avena cocida</p>
-									<p class="white-text">1 1/2 C de coco rallado</p>
-									<a class="btn waves-effect white grey-text darken-text-2">comí esto</a>
-						    </div>
+								{{#each platillosDesayuno}}
+							    <div class="carousel-item {{colorTarjeta}} white-text" href={{hrefTarjeta}}>
+										<div class="container">
+											<h2>{{this.titulo}}</h2>
+								      <p class="white-text">{{this.detalle}}</p>
+											<a class="btn waves-effect white grey-text darken-text-2">comí esto</a>
+										</div>
+							    </div>
+								{{/each}}
 								<div class="carousel-item brown white-text" href="#eight!">
-						      <h2>Otro</h2>
-						      <p class="white-text">Cuentanos que comiste</p>
-									<div class="input-field col s6 offset-s3">
-					          <textarea id="textarea1" class="materialize-textarea"></textarea>
-					        </div>
-									<div class="col s12">
-										<a class="btn waves-effect white grey-text darken-text-2">comí esto</a>
+									<div class="container">
+							      <h2>Otro</h2>
+							      <p class="white-text">Cuentanos que comiste</p>
+										<div class="input-field col s6 offset-s3">
+						          <textarea id="textarea1" class="materialize-textarea"></textarea>
+						        </div>
+										<div class="col s12">
+											<a class="btn waves-effect white grey-text darken-text-2">comí esto</a>
+										</div>
 									</div>
 						    </div>
 						  </div>
@@ -133,10 +85,7 @@
 	              <p>Horario: <strong>11AM - 1PM</strong></p>
 								<p>
 									Raciones: <br />
-									1 Leche <br />
-									1 Fruta <br />
-									1 Cereal S/G <br />
-									1 Grasa <br />
+									{{racionMediaMañana}}
 								</p>
 	            </div>
 	            <div class="card-action">
@@ -150,62 +99,15 @@
 						    <!-- <div class="carousel-fixed-item center">
 						      <a class="btn waves-effect white grey-text darken-text-2">button</a>
 						    </div> -->
-						    <div class="carousel-item red white-text" href="#one!">
-						      <h2>Cereal con leche y fresas con crema</h2>
-						      <p class="white-text">1 taza de leche descremada</p>
-									<p class="white-text">1 taza de fresa rebanada</p>
-									<p class="white-text">1/2 taza de cereal sin azúcar</p>
-									<p class="white-text">1 C de crema ligera</p>
-									<a class="btn waves-effect white grey-text darken-text-2">comí esto</a>
-						    </div>
-						    <div class="carousel-item amber white-text" href="#two!">
-						      <h2>Pan tostado y yogurt</h2>
-						      <p class="white-text">3/4 taza de yogurt light</p>
-									<p class="white-text">1 taza de papaya picada</p>
-									<p class="white-text">1 rebanada de pan tostado</p>
-									<p class="white-text">1 1/2 c de mantequilla sin sal</p>
-									<a class="btn waves-effect white grey-text darken-text-2">comí esto</a>
-						    </div>
-						    <div class="carousel-item green white-text" href="#three!">
-						      <h2>Avena con melón</h2>
-						      <p class="white-text">1 taza de leche descremada</p>
-									<p class="white-text">1 taza de melón picado</p>
-									<p class="white-text">3/4 taza de avena cocida</p>
-									<p class="white-text">1 1/2 C de coco rallado</p>
-									<a class="btn waves-effect white grey-text darken-text-2">comí esto</a>
-						    </div>
-						    <div class="carousel-item blue white-text" href="#four!">
-						      <h2>Licuado de melón con mini sándwich con queso crema</h2>
-						      <p class="white-text">1 taza de leche descremada</p>
-									<p class="white-text">1 taza de melón picado</p>
-									<p class="white-text">1 rebanada de pan integral</p>
-									<p class="white-text">1 C de queso crema</p>
-									<a class="btn waves-effect white grey-text darken-text-2">comí esto</a>
-						    </div>
-								<div class="carousel-item purple white-text" href="#five!">
-						      <h2>Melón con yogurt</h2>
-						      <p class="white-text">3/4 taza de yogurt light</p>
-									<p class="white-text">1 taza de melón picado</p>
-									<p class="white-text">3 C de granola baja en grasa</p>
-									<p class="white-text">1 1/2 C de coco rallado</p>
-									<a class="btn waves-effect white grey-text darken-text-2">comí esto</a>
-						    </div>
-						    <div class="carousel-item cyan white-text" href="#six!">
-						      <h2>Yogurt con manzana y crema ligera</h2>
-						      <p class="white-text">3/4 taza de yogurt light</p>
-									<p class="white-text">1/2 taza de manzana picada</p>
-									<p class="white-text">1 rebanada de pan integral</p>
-									<p class="white-text">1 C de crema ligera</p>
-									<a class="btn waves-effect white grey-text darken-text-2">comí esto</a>
-						    </div>
-								<div class="carousel-item pink white-text" href="#seven!">
-						      <h2>Avena con manzana y coco</h2>
-						      <p class="white-text">1 taza de leche descremada</p>
-									<p class="white-text">1/2 taza de manzana picado</p>
-									<p class="white-text">3/4 taza de avena cocida</p>
-									<p class="white-text">1 1/2 C de coco rallado</p>
-									<a class="btn waves-effect white grey-text darken-text-2">comí esto</a>
-						    </div>
+								{{#each platillosMediaMañana}}
+							    <div class="carousel-item {{colorTarjeta}} white-text" href={{hrefTarjeta}}>
+										<div class="container">
+											<h2>{{this.titulo}}</h2>
+								      <p class="white-text">{{this.detalle}}</p>
+											<a class="btn waves-effect white grey-text darken-text-2">comí esto</a>
+										</div>
+							    </div>
+								{{/each}}
 								<div class="carousel-item brown white-text" href="#eight!">
 						      <h2>Otro</h2>
 						      <p class="white-text">Cuentanos que comiste</p>
@@ -228,10 +130,7 @@
 	              <p>Horario: <strong>2PM - 4PM</strong></p>
 								<p>
 									Raciones: <br />
-									1 Leche <br />
-									1 Fruta <br />
-									1 Cereal S/G <br />
-									1 Grasa <br />
+									{{racionComida}}
 								</p>
 	            </div>
 	            <div class="card-action">
@@ -245,62 +144,15 @@
 						    <!-- <div class="carousel-fixed-item center">
 						      <a class="btn waves-effect white grey-text darken-text-2">button</a>
 						    </div> -->
-						    <div class="carousel-item red white-text" href="#one!">
-						      <h2>Cereal con leche y fresas con crema</h2>
-						      <p class="white-text">1 taza de leche descremada</p>
-									<p class="white-text">1 taza de fresa rebanada</p>
-									<p class="white-text">1/2 taza de cereal sin azúcar</p>
-									<p class="white-text">1 C de crema ligera</p>
-									<a class="btn waves-effect white grey-text darken-text-2">comí esto</a>
-						    </div>
-						    <div class="carousel-item amber white-text" href="#two!">
-						      <h2>Pan tostado y yogurt</h2>
-						      <p class="white-text">3/4 taza de yogurt light</p>
-									<p class="white-text">1 taza de papaya picada</p>
-									<p class="white-text">1 rebanada de pan tostado</p>
-									<p class="white-text">1 1/2 c de mantequilla sin sal</p>
-									<a class="btn waves-effect white grey-text darken-text-2">comí esto</a>
-						    </div>
-						    <div class="carousel-item green white-text" href="#three!">
-						      <h2>Avena con melón</h2>
-						      <p class="white-text">1 taza de leche descremada</p>
-									<p class="white-text">1 taza de melón picado</p>
-									<p class="white-text">3/4 taza de avena cocida</p>
-									<p class="white-text">1 1/2 C de coco rallado</p>
-									<a class="btn waves-effect white grey-text darken-text-2">comí esto</a>
-						    </div>
-						    <div class="carousel-item blue white-text" href="#four!">
-						      <h2>Licuado de melón con mini sándwich con queso crema</h2>
-						      <p class="white-text">1 taza de leche descremada</p>
-									<p class="white-text">1 taza de melón picado</p>
-									<p class="white-text">1 rebanada de pan integral</p>
-									<p class="white-text">1 C de queso crema</p>
-									<a class="btn waves-effect white grey-text darken-text-2">comí esto</a>
-						    </div>
-								<div class="carousel-item purple white-text" href="#five!">
-						      <h2>Melón con yogurt</h2>
-						      <p class="white-text">3/4 taza de yogurt light</p>
-									<p class="white-text">1 taza de melón picado</p>
-									<p class="white-text">3 C de granola baja en grasa</p>
-									<p class="white-text">1 1/2 C de coco rallado</p>
-									<a class="btn waves-effect white grey-text darken-text-2">comí esto</a>
-						    </div>
-						    <div class="carousel-item cyan white-text" href="#six!">
-						      <h2>Yogurt con manzana y crema ligera</h2>
-						      <p class="white-text">3/4 taza de yogurt light</p>
-									<p class="white-text">1/2 taza de manzana picada</p>
-									<p class="white-text">1 rebanada de pan integral</p>
-									<p class="white-text">1 C de crema ligera</p>
-									<a class="btn waves-effect white grey-text darken-text-2">comí esto</a>
-						    </div>
-								<div class="carousel-item pink white-text" href="#seven!">
-						      <h2>Avena con manzana y coco</h2>
-						      <p class="white-text">1 taza de leche descremada</p>
-									<p class="white-text">1/2 taza de manzana picado</p>
-									<p class="white-text">3/4 taza de avena cocida</p>
-									<p class="white-text">1 1/2 C de coco rallado</p>
-									<a class="btn waves-effect white grey-text darken-text-2">comí esto</a>
-						    </div>
+								{{#each platillosComida}}
+							    <div class="carousel-item {{colorTarjeta}} white-text" href={{hrefTarjeta}}>
+										<div class="container">
+											<h2>{{this.titulo}}</h2>
+								      <p class="white-text">{{this.detalle}}</p>
+											<a class="btn waves-effect white grey-text darken-text-2">comí esto</a>
+										</div>
+							    </div>
+								{{/each}}
 								<div class="carousel-item brown white-text" href="#eight!">
 						      <h2>Otro</h2>
 						      <p class="white-text">Cuentanos que comiste</p>
@@ -323,10 +175,7 @@
 	              <p>Horario: <strong>5PM - 8PM</strong></p>
 								<p>
 									Raciones: <br />
-									1 Leche <br />
-									1 Fruta <br />
-									1 Cereal S/G <br />
-									1 Grasa <br />
+									{{racionMediaTarde}}
 								</p>
 	            </div>
 	            <div class="card-action">
@@ -340,62 +189,15 @@
 						    <!-- <div class="carousel-fixed-item center">
 						      <a class="btn waves-effect white grey-text darken-text-2">button</a>
 						    </div> -->
-						    <div class="carousel-item red white-text" href="#one!">
-						      <h2>Cereal con leche y fresas con crema</h2>
-						      <p class="white-text">1 taza de leche descremada</p>
-									<p class="white-text">1 taza de fresa rebanada</p>
-									<p class="white-text">1/2 taza de cereal sin azúcar</p>
-									<p class="white-text">1 C de crema ligera</p>
-									<a class="btn waves-effect white grey-text darken-text-2">comí esto</a>
-						    </div>
-						    <div class="carousel-item amber white-text" href="#two!">
-						      <h2>Pan tostado y yogurt</h2>
-						      <p class="white-text">3/4 taza de yogurt light</p>
-									<p class="white-text">1 taza de papaya picada</p>
-									<p class="white-text">1 rebanada de pan tostado</p>
-									<p class="white-text">1 1/2 c de mantequilla sin sal</p>
-									<a class="btn waves-effect white grey-text darken-text-2">comí esto</a>
-						    </div>
-						    <div class="carousel-item green white-text" href="#three!">
-						      <h2>Avena con melón</h2>
-						      <p class="white-text">1 taza de leche descremada</p>
-									<p class="white-text">1 taza de melón picado</p>
-									<p class="white-text">3/4 taza de avena cocida</p>
-									<p class="white-text">1 1/2 C de coco rallado</p>
-									<a class="btn waves-effect white grey-text darken-text-2">comí esto</a>
-						    </div>
-						    <div class="carousel-item blue white-text" href="#four!">
-						      <h2>Licuado de melón con mini sándwich con queso crema</h2>
-						      <p class="white-text">1 taza de leche descremada</p>
-									<p class="white-text">1 taza de melón picado</p>
-									<p class="white-text">1 rebanada de pan integral</p>
-									<p class="white-text">1 C de queso crema</p>
-									<a class="btn waves-effect white grey-text darken-text-2">comí esto</a>
-						    </div>
-								<div class="carousel-item purple white-text" href="#five!">
-						      <h2>Melón con yogurt</h2>
-						      <p class="white-text">3/4 taza de yogurt light</p>
-									<p class="white-text">1 taza de melón picado</p>
-									<p class="white-text">3 C de granola baja en grasa</p>
-									<p class="white-text">1 1/2 C de coco rallado</p>
-									<a class="btn waves-effect white grey-text darken-text-2">comí esto</a>
-						    </div>
-						    <div class="carousel-item cyan white-text" href="#six!">
-						      <h2>Yogurt con manzana y crema ligera</h2>
-						      <p class="white-text">3/4 taza de yogurt light</p>
-									<p class="white-text">1/2 taza de manzana picada</p>
-									<p class="white-text">1 rebanada de pan integral</p>
-									<p class="white-text">1 C de crema ligera</p>
-									<a class="btn waves-effect white grey-text darken-text-2">comí esto</a>
-						    </div>
-								<div class="carousel-item pink white-text" href="#seven!">
-						      <h2>Avena con manzana y coco</h2>
-						      <p class="white-text">1 taza de leche descremada</p>
-									<p class="white-text">1/2 taza de manzana picado</p>
-									<p class="white-text">3/4 taza de avena cocida</p>
-									<p class="white-text">1 1/2 C de coco rallado</p>
-									<a class="btn waves-effect white grey-text darken-text-2">comí esto</a>
-						    </div>
+								{{#each platillosMediaTarde}}
+							    <div class="carousel-item {{colorTarjeta}} white-text" href={{hrefTarjeta}}>
+										<div class="container">
+											<h2>{{this.titulo}}</h2>
+								      <p class="white-text">{{this.detalle}}</p>
+											<a class="btn waves-effect white grey-text darken-text-2">comí esto</a>
+										</div>
+							    </div>
+								{{/each}}
 								<div class="carousel-item brown white-text" href="#eight!">
 						      <h2>Otro</h2>
 						      <p class="white-text">Cuentanos que comiste</p>
@@ -418,10 +220,7 @@
 	              <p>Horario: <strong>9PM - 11PM</strong></p>
 								<p>
 									Raciones: <br />
-									1 Leche <br />
-									1 Fruta <br />
-									1 Cereal S/G <br />
-									1 Grasa <br />
+									{{racionCena}}
 								</p>
 	            </div>
 	            <div class="card-action">
@@ -435,62 +234,15 @@
 						    <!-- <div class="carousel-fixed-item center">
 						      <a class="btn waves-effect white grey-text darken-text-2">button</a>
 						    </div> -->
-						    <div class="carousel-item red white-text" href="#one!">
-						      <h2>Cereal con leche y fresas con crema</h2>
-						      <p class="white-text">1 taza de leche descremada</p>
-									<p class="white-text">1 taza de fresa rebanada</p>
-									<p class="white-text">1/2 taza de cereal sin azúcar</p>
-									<p class="white-text">1 C de crema ligera</p>
-									<a class="btn waves-effect white grey-text darken-text-2">comí esto</a>
-						    </div>
-						    <div class="carousel-item amber white-text" href="#two!">
-						      <h2>Pan tostado y yogurt</h2>
-						      <p class="white-text">3/4 taza de yogurt light</p>
-									<p class="white-text">1 taza de papaya picada</p>
-									<p class="white-text">1 rebanada de pan tostado</p>
-									<p class="white-text">1 1/2 c de mantequilla sin sal</p>
-									<a class="btn waves-effect white grey-text darken-text-2">comí esto</a>
-						    </div>
-						    <div class="carousel-item green white-text" href="#three!">
-						      <h2>Avena con melón</h2>
-						      <p class="white-text">1 taza de leche descremada</p>
-									<p class="white-text">1 taza de melón picado</p>
-									<p class="white-text">3/4 taza de avena cocida</p>
-									<p class="white-text">1 1/2 C de coco rallado</p>
-									<a class="btn waves-effect white grey-text darken-text-2">comí esto</a>
-						    </div>
-						    <div class="carousel-item blue white-text" href="#four!">
-						      <h2>Licuado de melón con mini sándwich con queso crema</h2>
-						      <p class="white-text">1 taza de leche descremada</p>
-									<p class="white-text">1 taza de melón picado</p>
-									<p class="white-text">1 rebanada de pan integral</p>
-									<p class="white-text">1 C de queso crema</p>
-									<a class="btn waves-effect white grey-text darken-text-2">comí esto</a>
-						    </div>
-								<div class="carousel-item purple white-text" href="#five!">
-						      <h2>Melón con yogurt</h2>
-						      <p class="white-text">3/4 taza de yogurt light</p>
-									<p class="white-text">1 taza de melón picado</p>
-									<p class="white-text">3 C de granola baja en grasa</p>
-									<p class="white-text">1 1/2 C de coco rallado</p>
-									<a class="btn waves-effect white grey-text darken-text-2">comí esto</a>
-						    </div>
-						    <div class="carousel-item cyan white-text" href="#six!">
-						      <h2>Yogurt con manzana y crema ligera</h2>
-						      <p class="white-text">3/4 taza de yogurt light</p>
-									<p class="white-text">1/2 taza de manzana picada</p>
-									<p class="white-text">1 rebanada de pan integral</p>
-									<p class="white-text">1 C de crema ligera</p>
-									<a class="btn waves-effect white grey-text darken-text-2">comí esto</a>
-						    </div>
-								<div class="carousel-item pink white-text" href="#seven!">
-						      <h2>Avena con manzana y coco</h2>
-						      <p class="white-text">1 taza de leche descremada</p>
-									<p class="white-text">1/2 taza de manzana picado</p>
-									<p class="white-text">3/4 taza de avena cocida</p>
-									<p class="white-text">1 1/2 C de coco rallado</p>
-									<a class="btn waves-effect white grey-text darken-text-2">comí esto</a>
-						    </div>
+								{{#each platillosCena}}
+							    <div class="carousel-item {{colorTarjeta}} white-text" href={{hrefTarjeta}}>
+										<div class="container">
+											<h2>{{this.titulo}}</h2>
+								      <p class="white-text">{{this.detalle}}</p>
+											<a class="btn waves-effect white grey-text darken-text-2">comí esto</a>
+										</div>
+							    </div>
+								{{/each}}
 								<div class="carousel-item brown white-text" href="#eight!">
 						      <h2>Otro</h2>
 						      <p class="white-text">Cuentanos que comiste</p>
