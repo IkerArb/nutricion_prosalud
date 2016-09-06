@@ -270,28 +270,70 @@ Template.PerfilUserNutriologo.helpers({
 
 });
 
+
+
 Template.PerfilUserMenu.rendered = function(){
 	$('.collapsible').collapsible();
 	$('.materialize-textarea').trigger('autoresize');
-	
+
 };
 
 Template.PerfilUserMenu.helpers({
 	racionDesayuno: function(){
 		return Meteor.users.findOne({_id: this.params._id}).profile.menu.desayuno.racion;
 	},
+	platillosDesayuno: function(){
+		var platillos = Meteor.users.findOne({_id: this.params._id}).profile.menu.desayuno.platillos;
+		var platillosArray = [];
+		for(var i in platillos){
+			platillosArray =  platillosArray.concat({_id:i,titulo:platillos[i].titulo,detalle:platillos[i].detalle});
+		}
+		return platillosArray;
+	},
 	racionMediaMañana: function(){
 		return Meteor.users.findOne({_id: this.params._id}).profile.menu.media_mañana.racion;
+	},
+	platillosMediaMañana: function(){
+		var platillos = Meteor.users.findOne({_id: this.params._id}).profile.menu.media_mañana.platillos;
+		var platillosArray = [];
+		for(var i in platillos){
+			platillosArray =  platillosArray.concat({_id:i,titulo:platillos[i].titulo,detalle:platillos[i].detalle});
+		}
+		return platillosArray;
 	},
 	racionComida: function(){
 		return Meteor.users.findOne({_id: this.params._id}).profile.menu.comida.racion;
 	},
+	platillosComida: function(){
+		var platillos = Meteor.users.findOne({_id: this.params._id}).profile.menu.comida.platillos;
+		var platillosArray = [];
+		for(var i in platillos){
+			platillosArray =  platillosArray.concat({_id:i,titulo:platillos[i].titulo,detalle:platillos[i].detalle});
+		}
+		return platillosArray;
+	},
 	racionMediaTarde: function(){
 		return Meteor.users.findOne({_id: this.params._id}).profile.menu.media_tarde.racion;
 	},
+	platillosMediaTarde: function(){
+		var platillos = Meteor.users.findOne({_id: this.params._id}).profile.menu.media_tarde.platillos;
+		var platillosArray = [];
+		for(var i in platillos){
+			platillosArray =  platillosArray.concat({_id:i,titulo:platillos[i].titulo,detalle:platillos[i].detalle});
+		}
+		return platillosArray;
+	},
 	racionCena: function(){
 		return Meteor.users.findOne({_id: this.params._id}).profile.menu.cena.racion;
-	}
+	},
+	platillosCena: function(){
+		var platillos = Meteor.users.findOne({_id: this.params._id}).profile.menu.cena.platillos;
+		var platillosArray = [];
+		for(var i in platillos){
+			platillosArray =  platillosArray.concat({_id:i,titulo:platillos[i].titulo,detalle:platillos[i].detalle});
+		}
+		return platillosArray;
+	},
 });
 
 Template.PerfilUserMenu.events({
@@ -359,6 +401,91 @@ Template.PerfilUserMenu.events({
 	'change #racion-cena': function(e){
 		var racion = e.target.value;
 		Meteor.call("cambiaAgregaRacionCena",this.params._id,racion);
+	},
+	'change .changeTitulo.desayuno':function(e){
+		var titulo = e.target.value;
+		var _id = e.target.parentElement.parentElement.id;
+		var paramId = Router.current().params._id;
+		Meteor.call("editaPlatilloTituloDesayuno",paramId,_id,titulo);
+	},
+	'change .changeTitulo.media_mañana':function(e){
+		var titulo = e.target.value;
+		var _id = e.target.parentElement.parentElement.id;
+		var paramId = Router.current().params._id;
+		Meteor.call("editaPlatilloTituloMediaMañana",paramId,_id,titulo);
+	},
+	'change .changeTitulo.comida':function(e){
+		var titulo = e.target.value;
+		var _id = e.target.parentElement.parentElement.id;
+		var paramId = Router.current().params._id;
+		Meteor.call("editaPlatilloTituloComida",paramId,_id,titulo);
+	},
+	'change .changeTitulo.media_tarde':function(e){
+		var titulo = e.target.value;
+		var _id = e.target.parentElement.parentElement.id;
+		var paramId = Router.current().params._id;
+		Meteor.call("editaPlatilloTituloMediaTarde",paramId,_id,titulo);
+	},
+	'change .changeTitulo.cena':function(e){
+		var titulo = e.target.value;
+		var _id = e.target.parentElement.parentElement.id;
+		var paramId = Router.current().params._id;
+		Meteor.call("editaPlatilloTituloCena",paramId,_id,titulo);
+	},
+	'change .changeDetalle.desayuno':function(e){
+		var detalle = e.target.value;
+		var _id = e.target.parentElement.parentElement.id;
+		var paramId = Router.current().params._id;
+		Meteor.call("editaPlatilloDetalleDesayuno",paramId,_id,detalle);
+	},
+	'change .changeDetalle.media_mañana':function(e){
+		var detalle = e.target.value;
+		var _id = e.target.parentElement.parentElement.id;
+		var paramId = Router.current().params._id;
+		Meteor.call("editaPlatilloDetalleMediaMañana",paramId,_id,detalle);
+	},
+	'change .changeDetalle.comida':function(e){
+		var detalle = e.target.value;
+		var _id = e.target.parentElement.parentElement.id;
+		var paramId = Router.current().params._id;
+		Meteor.call("editaPlatilloDetalleComida",paramId,_id,detalle);
+	},
+	'change .changeDetalle.media_tarde':function(e){
+		var detalle = e.target.value;
+		var _id = e.target.parentElement.parentElement.id;
+		var paramId = Router.current().params._id;
+		Meteor.call("editaPlatilloDetalleMediaTarde",paramId,_id,detalle);
+	},
+	'change .changeDetalle.cena':function(e){
+		var detalle = e.target.value;
+		var _id = e.target.parentElement.parentElement.id;
+		var paramId = Router.current().params._id;
+		Meteor.call("editaPlatilloDetalleCena",paramId,_id,detalle);
+	},
+	'click .delete.desayuno':function(e){
+		var _id = e.target.parentElement.parentElement.id;
+		var paramId = Router.current().params._id;
+		Meteor.call("borraPlatilloDesayuno",paramId,_id);
+	},
+	'click .delete.media_mañana':function(e){
+		var _id = e.target.parentElement.parentElement.id;
+		var paramId = Router.current().params._id;
+		Meteor.call("borraPlatilloMediaMañana",paramId,_id);
+	},
+	'click .delete.comida':function(e){
+		var _id = e.target.parentElement.parentElement.id;
+		var paramId = Router.current().params._id;
+		Meteor.call("borraPlatilloComida",paramId,_id);
+	},
+	'click .delete.media_tarde':function(e){
+		var _id = e.target.parentElement.parentElement.id;
+		var paramId = Router.current().params._id;
+		Meteor.call("borraPlatilloMediaTarde",paramId,_id);
+	},
+	'click .delete.cena':function(e){
+		var _id = e.target.parentElement.parentElement.id;
+		var paramId = Router.current().params._id;
+		Meteor.call("borraPlatilloCena",paramId,_id);
 	}
 });
 

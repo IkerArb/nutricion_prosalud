@@ -31,7 +31,6 @@ matb33:collection-hooks
 perak:user-roles
 copleykj:livestamp
 flemay:less-autoprefixer
-reactive-dict
 mrt:moment
 rajit:bootstrap3-datepicker
 aslagle:reactive-table
@@ -40,3 +39,5 @@ themeteorchef:jquery-validation
 check
 fourseven:scss
 materialize:materialize
+session
+reactive-dict

@@ -170,22 +170,21 @@
 						  </thead>
 
 						  <tbody>
-						    <tr>
-						      <td>
-										<input id="_titulo" type="text" class="validate changeTitulo" value="Cereal con leche y fresas con crema" required>
-									</td>
-						      <td>
-										<textarea id="_detalle" class="materialize-textarea validate changeDetalle" value="1 taza de leche descremada
-	1 taza de fresa rebanada
-	1/2 taza de cereal sin azúcar
-	1 C de crema ligera"></textarea>
-									</td>
-									<td>
-										<button class="btn waves-effect waves-light red">
-											Eliminar<i class="material-icons right">delete</i>
-									  </button>
-									</td>
-						    </tr>
+								{{#each platillosDesayuno}}
+							    <tr id={{_id}}>
+							      <td>
+											<input  type="text" class="validate changeTitulo desayuno" value={{titulo}} required>
+										</td>
+							      <td>
+											<textarea class="materialize-textarea validate changeDetalle desayuno" value={{detalle}}></textarea>
+										</td>
+										<td>
+											<button class="btn waves-effect waves-light red delete desayuno">
+												Eliminar<i class="material-icons right">delete</i>
+										  </button>
+										</td>
+							    </tr>
+								{{/each}}
 						  </tbody>
 						</table>
 					</div>
@@ -233,22 +232,21 @@
 						  </thead>
 
 						  <tbody>
-						    <tr>
-						      <td>
-										<input id="_titulo" type="text" class="validate changeTitulo" value="Cereal con leche y fresas con crema" required>
-									</td>
-						      <td>
-										<textarea id="_detalle" class="materialize-textarea validate changeDetalle" value="1 taza de leche descremada
-	1 taza de fresa rebanada
-	1/2 taza de cereal sin azúcar
-	1 C de crema ligera"></textarea>
-									</td>
-									<td>
-										<button class="btn waves-effect waves-light red">
-											Eliminar<i class="material-icons right">delete</i>
-									  </button>
-									</td>
-						    </tr>
+								{{#each platillosMediaMañana}}
+									<tr id={{_id}}>
+										<td>
+											<input type="text" class="validate changeTitulo media_mañana" value={{titulo}} required>
+										</td>
+										<td>
+											<textarea class="materialize-textarea validate changeDetalle media_mañana" value={{detalle}}></textarea>
+										</td>
+										<td>
+											<button class="btn waves-effect waves-light red delete media_mañana">
+												Eliminar<i class="material-icons right">delete</i>
+											</button>
+										</td>
+									</tr>
+								{{/each}}
 						  </tbody>
 						</table>
 					</div>
@@ -296,22 +294,21 @@
 						  </thead>
 
 						  <tbody>
-						    <tr>
-						      <td>
-										<input id="_titulo" type="text" class="validate changeTitulo" value="Cereal con leche y fresas con crema" required>
-									</td>
-						      <td>
-										<textarea id="_detalle" class="materialize-textarea validate changeDetalle" value="1 taza de leche descremada
-	1 taza de fresa rebanada
-	1/2 taza de cereal sin azúcar
-	1 C de crema ligera"></textarea>
-									</td>
-									<td>
-										<button class="btn waves-effect waves-light red">
-											Eliminar<i class="material-icons right">delete</i>
-									  </button>
-									</td>
-						    </tr>
+								{{#each platillosComida}}
+									<tr id={{_id}}>
+										<td>
+											<input type="text" class="validate changeTitulo comida" value={{titulo}} required>
+										</td>
+										<td>
+											<textarea class="materialize-textarea validate changeDetalle comida" value={{detalle}}></textarea>
+										</td>
+										<td>
+											<button class="btn waves-effect waves-light red delete comida">
+												Eliminar<i class="material-icons right">delete</i>
+											</button>
+										</td>
+									</tr>
+								{{/each}}
 						  </tbody>
 						</table>
 					</div>
@@ -359,22 +356,21 @@
 						  </thead>
 
 						  <tbody>
-						    <tr>
-						      <td>
-										<input id="_titulo" type="text" class="validate changeTitulo" value="Cereal con leche y fresas con crema" required>
-									</td>
-						      <td>
-										<textarea id="_detalle" class="materialize-textarea validate changeDetalle" value="1 taza de leche descremada
-	1 taza de fresa rebanada
-	1/2 taza de cereal sin azúcar
-	1 C de crema ligera"></textarea>
-									</td>
-									<td>
-										<button class="btn waves-effect waves-light red">
-											Eliminar<i class="material-icons right">delete</i>
-									  </button>
-									</td>
-						    </tr>
+								{{#each platillosMediaTarde}}
+									<tr id={{_id}}>
+										<td>
+											<input type="text" class="validate changeTitulo media_tarde" value={{titulo}} required>
+										</td>
+										<td>
+											<textarea class="materialize-textarea validate changeDetalle media_tarde" value={{detalle}}></textarea>
+										</td>
+										<td>
+											<button class="btn waves-effect waves-light red delete media_tarde">
+												Eliminar<i class="material-icons right">delete</i>
+											</button>
+										</td>
+									</tr>
+								{{/each}}
 						  </tbody>
 						</table>
 					</div>
@@ -421,22 +417,21 @@
 						    </tr>
 						  </thead>
 						  <tbody>
-						    <tr>
-						      <td>
-										<input id="_titulo" type="text" class="validate changeTitulo" value="Cereal con leche y fresas con crema" required>
-									</td>
-						      <td>
-										<textarea id="_detalle" class="materialize-textarea validate changeDetalle" value="1 taza de leche descremada
-	1 taza de fresa rebanada
-	1/2 taza de cereal sin azúcar
-	1 C de crema ligera"></textarea>
-									</td>
-									<td>
-										<button class="btn waves-effect waves-light red">
-											Eliminar<i class="material-icons right">delete</i>
-									  </button>
-									</td>
-						    </tr>
+								{{#each platillosCena}}
+									<tr id={{_id}}>
+										<td>
+											<input type="text" class="validate changeTitulo cena" value={{titulo}} required>
+										</td>
+										<td>
+											<textarea class="materialize-textarea validate changeDetalle cena" value={{detalle}}></textarea>
+										</td>
+										<td>
+											<button class="btn waves-effect waves-light red delete cena">
+												Eliminar<i class="material-icons right">delete</i>
+											</button>
+										</td>
+									</tr>
+								{{/each}}
 						  </tbody>
 						</table>
 					</div>
