@@ -11,3 +11,10 @@ Meteor.publish("info_user",function(idUser){
 	}
 	return this.ready();
 });
+
+Meteor.publish("nutriologo_users", function(){
+	if(Users.isInRoles(this.userId,["nutriologo"])){
+		return Meteor.users.find({"profile.nutriologo":this.userId});
+	}
+	return this.ready();
+});

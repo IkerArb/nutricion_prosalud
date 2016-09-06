@@ -1,23 +1,51 @@
 <template name="HomeNutriologo">
-	<div class="page-container">
-		<div class="row">
-			<div class="col-md-12" id="content">
-				<div class="row" id="title_row">
-					<div class="col-md-12">
-						<div id="page_menu" class="pull-right">
-						</div>
-					</div>
-				</div>
+	<div class="">
+		<div class="tituloUser gray-lighten-5">
+			<div class="row">
+				<h3>Pacientes</h3>
+			</div>
+			<div class="row">
+				Consulta tus pacientes y entra al detalle
+				para editarlos
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-md-12" id="menu">
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-12" id="subcontent">
-			</div>
-		</div>
+		<!-- Tabla de usuarios -->
+		<table class="">
+			 <thead>
+				 <tr>
+						 <th data-field="name">Nombre</th>
+						 <th data-field="email">Correo</th>
+						 <th data-field="birthDay">Fecha de Nacimiento</th>
+						 <th data-field="detalle">Ir a detalle</th>
+				 </tr>
+			 </thead>
+			 <tbody>
+				 {{#each pacientes}}
+				 <tr>
+					 <td>
+						 <p>
+							 {{profile.name}}
+						 </p>
+					 </td>
+					 <td>
+						 <p>
+							 {{profile.email}}
+						 </p>
+					 </td>
+					 <td>
+						 <p>
+							 {{profile.birthDay}}
+						 </p>
+					 </td>
+					 <td>
+						 	<p>
+	       				<a href="{{userPath}}">Ir a detalle</a>
+	     				</p>
+					 </td>
+				 </tr>
+				 {{/each}}
+			 </tbody>
+		 </table>
+		 <!-- Termina Tabla -->
 	</div>
 </template>
-

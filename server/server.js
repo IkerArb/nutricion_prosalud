@@ -2,12 +2,12 @@ var verifyEmail = false;
 
 Accounts.config({ sendVerificationEmail: verifyEmail });
 
-// var userOptions = {};
-// userOptions.email = "ikerarbulu@gmail.com";
-// userOptions.password = "prueba";
-// userOptions.profile = {"name":"Iker Arbulu Lozano", "email":"ikerarbulu@gmail.com"};
-//
-// Accounts.createUser(userOptions);
+var userOptions = {};
+userOptions.email = "ikerarbulu@gmail.com";
+userOptions.password = "prueba";
+userOptions.profile = {"name":"Iker Arbulu Lozano", "email":"ikerarbulu@gmail.com"};
+
+Accounts.createUser(userOptions);
 
 Meteor.startup(function() {
 	// Accounts.createUser({email: 'prueba@prueba.com', password : 'prueba', profile: { name: 'pruebaUser', rol:"user" }});
