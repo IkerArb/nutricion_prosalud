@@ -1,3 +1,5 @@
+import {coloresTarjetas} from "/both/lib/coloresTarjetas.js";
+
 Template.HomeUser.rendered = function() {
 	$('.carousel.carousel-slider').carousel({full_width: true,time_constant:400});
 	$(".menu-details").hide();
@@ -127,5 +129,77 @@ Template.HomeUser.events({
 });
 
 Template.HomeUser.helpers({
-
+	racionDesayuno: function(){
+		return Meteor.user().profile.menu.desayuno.racion;
+	},
+	racionMediaMañana: function(){
+		return Meteor.user().profile.menu.media_mañana.racion;
+	},
+	racionComida: function(){
+		return Meteor.user().profile.menu.comida.racion;
+	},
+	racionMediaTarde: function(){
+		return Meteor.user().profile.menu.media_tarde.racion;
+	},
+	racionCena: function(){
+		return Meteor.user().profile.menu.cena.racion;
+	},
+	platillosDesayuno: function(){
+		var platillos = Meteor.user().profile.menu.desayuno.platillos;
+		var platillosArray = [];
+		var count=0;
+		for(var i in platillos){
+			platillosArray =  platillosArray.concat({_id:i,titulo:platillos[i].titulo,detalle:platillos[i].detalle,count:count%6});
+			count+=1;
+		}
+		Session.set('countPlatillosDesayuno',count);
+		return platillosArray;
+	},
+	platillosMediaMañana: function(){
+		var platillos = Meteor.user().profile.menu.media_mañana.platillos;
+		var platillosArray = [];
+		var count=0;
+		for(var i in platillos){
+			platillosArray =  platillosArray.concat({_id:i,titulo:platillos[i].titulo,detalle:platillos[i].detalle,count:count%6});
+			count+=1;
+		}
+		Session.set('countPlatillosMediaMañana',count);
+		return platillosArray;
+	},
+	platillosComida: function(){
+		var platillos = Meteor.user().profile.menu.comida.platillos;
+		var platillosArray = [];
+		var count=0;
+		for(var i in platillos){
+			platillosArray =  platillosArray.concat({_id:i,titulo:platillos[i].titulo,detalle:platillos[i].detalle,count:count%6});
+			count+=1;
+		}
+		Session.set('countPlatillosComida',count);
+		return platillosArray;
+	},
+	platillosMediaTarde: function(){
+		var platillos = Meteor.user().profile.menu.media_tarde.platillos;
+		var platillosArray = [];
+		var count=0;
+		for(var i in platillos){
+			platillosArray =  platillosArray.concat({_id:i,titulo:platillos[i].titulo,detalle:platillos[i].detalle,count:count%6});
+			count+=1;
+		}
+		Session.set('countPlatillosMediaTarde',count);
+		return platillosArray;
+	},
+	platillosCena: function(){
+		var platillos = Meteor.user().profile.menu.cena.platillos;
+		var platillosArray = [];
+		var count=0;
+		for(var i in platillos){
+			platillosArray =  platillosArray.concat({_id:i,titulo:platillos[i].titulo,detalle:platillos[i].detalle,count:count%6});
+			count+=1;
+		}
+		Session.set('countPlatillosCena',count);
+		return platillosArray;
+	},
+	colorTarjeta: function(){
+		return coloresTarjetas[this.count];
+	}
 });
