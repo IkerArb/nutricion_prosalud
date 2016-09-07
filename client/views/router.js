@@ -7,9 +7,7 @@ Router.configure({
 });
 
 var publicRoutes = [
-	"login",
-	"logout",
-	"reset_password"
+	"login"
 ];
 
 var privateRoutes = [
@@ -180,7 +178,6 @@ Router.onBeforeAction(Router.ensureLogged, {only: privateRoutes});
 Router.onBeforeAction(Router.ensureGranted, {only: freeRoutes}); // yes, route from free zone can be restricted to specific set of user roles
 
 Router.map(function () {
-
 	this.route("login", {path: "/login", controller: "LoginController"});
 	this.route("reset_password", {path: "/reset_password/:resetPasswordToken", controller: "ResetPasswordController"});
 	this.route("home_user", {path: "/home_user", controller: "HomeUserController"});
