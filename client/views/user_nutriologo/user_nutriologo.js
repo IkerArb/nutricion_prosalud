@@ -8,7 +8,9 @@ Template.UserNutriologo.events({
 });
 
 Template.UserNutriologo.helpers({
-
+	name:function(){
+	  return Meteor.users.findOne({_id:this.params._id}).profile.name;
+  },
 });
 
 Template.PerfilUserNutriologo.rendered = function() {
@@ -257,10 +259,6 @@ Template.PerfilUserNutriologo.helpers({
         }]
     });
   });
-  },
-
-  name:function(){
-  return Meteor.user().profile.name;
   },
 
   fechaNacimiento:function(){

@@ -25,37 +25,12 @@ Template.layout.rendered = function() {
 	/*TEMPLATE_RENDERED_CODE*/
 };
 
-
-Template.PrivateLayoutLeftMenu.rendered = function() {
-	$(".dropdown-button").dropdown();
-
+Template.PrivateLayout.rendered=function(){
+	$(".button-collapse").sideNav();
 };
-
-Template.PrivateLayoutLeftMenu.events({
-	"click .toggle-text": function(e, t) {
-		e.preventDefault();
-		$(e.target).closest("ul").toggleClass("menu-hide-text");
-	}
-
-});
-
-Template.PrivateLayoutLeftMenu.helpers({
-	homeLink: function(){
-		if(Meteor.user()){
-			if(Meteor.user().roles.indexOf('admin')>=0){
-				return '/home_admin';
-			}
-			if(Meteor.user().roles.indexOf('nutriologo')>=0){
-				return '/home_nutriologo';
-			}
-			return '/home_user';
-		}
-	}
-});
 
 Template.PrivateLayoutRightMenu.rendered = function() {
 	$(".dropdown-button").dropdown();
-
 };
 
 Template.PrivateLayoutRightMenu.events({
@@ -70,5 +45,15 @@ Template.PrivateLayoutRightMenu.events({
 });
 
 Template.PrivateLayoutRightMenu.helpers({
-
+	homeLink: function(){
+		if(Meteor.user()){
+			if(Meteor.user().roles.indexOf('admin')>=0){
+				return '/home_admin';
+			}
+			if(Meteor.user().roles.indexOf('nutriologo')>=0){
+				return '/home_nutriologo';
+			}
+			return '/home_user';
+		}
+	}
 });
