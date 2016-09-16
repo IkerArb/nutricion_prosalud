@@ -1,6 +1,6 @@
 this.HomeUserController = RouteController.extend({
 	template: "HomeUser",
-	
+
 
 	yieldTemplates: {
 		/*YIELD_TEMPLATES*/
@@ -16,10 +16,11 @@ this.HomeUserController = RouteController.extend({
 	},
 
 	isReady: function() {
-		
+
 
 		var subs = [
-			Meteor.subscribe("current_user_data")
+			Meteor.subscribe("current_user_data"),
+			Meteor.subscribe("meals_current_user")
 		];
 		var ready = true;
 		_.each(subs, function(sub) {
@@ -30,20 +31,21 @@ this.HomeUserController = RouteController.extend({
 	},
 
 	data: function() {
-		
+
 
 		var data = {
 			params: this.params || {},
-			current_user_data: Users.findOne({}, {})
+			current_user_data: Users.findOne({}, {}),
+			meals: Meals.find()
 		};
-		
 
-		
+
+
 
 		return data;
 	},
 
 	onAfterAction: function() {
-		
+
 	}
 });

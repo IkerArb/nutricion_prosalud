@@ -7,6 +7,7 @@ Template.HomeUser.rendered = function() {
     selectMonths: true, // Creates a dropdown to control month
     selectYears: 15, // Creates a dropdown of 15 years to control year
 		max: Date.now(),
+		min: -7
 	});
 	var today = new Date();
 	var month;
@@ -125,6 +126,46 @@ Template.HomeUser.events({
 		$(".cena-close").removeClass("cena-close");
 		$("#cena").addClass("m6",600);
 		$(".cena .card").removeClass("no-margin-bottom");
+	},
+	'click .comer-desayuno': function(e){
+		var fecha = new Date($('.datepicker').val());
+		Meteor.call('comerDesayuno',fecha,this.titulo,this.detalle,Meteor.userId());
+	},
+	'click .comer-media-mañana': function(e){
+		var fecha = new Date($('.datepicker').val());
+		Meteor.call('comerMediaMañana',fecha,this.titulo,this.detalle,Meteor.userId());
+	},
+	'click .comer-comida': function(e){
+		var fecha = new Date($('.datepicker').val());
+		Meteor.call('comerComida',fecha,this.titulo,this.detalle,Meteor.userId());
+	},
+	'click .comer-media-tarde': function(e){
+		var fecha = new Date($('.datepicker').val());
+		Meteor.call('comerMediaTarde',fecha,this.titulo,this.detalle,Meteor.userId());
+	},
+	'click .comer-cena': function(e){
+		var fecha = new Date($('.datepicker').val());
+		Meteor.call('comerCena',fecha,this.titulo,this.detalle,Meteor.userId());
+	},
+	'click .comer-otro-desayuno': function(e){
+		var fecha = new Date($('.datepicker').val());
+		Meteor.call('comerDesayuno',fecha,"Otro",$("#otro-desayuno").val(),Meteor.userId());
+	},
+	'click .comer-otro-media-mañana': function(e){
+		var fecha = new Date($('.datepicker').val());
+		Meteor.call('comerMediaMañana',fecha,"Otro",$("#otro-media-mañana").val(),Meteor.userId());
+	},
+	'click .comer-otro-comida': function(e){
+		var fecha = new Date($('.datepicker').val());
+		Meteor.call('comerComida',fecha,"Otro",$("#otro-comida").val(),Meteor.userId());
+	},
+	'click .comer-otro-media-tarde': function(e){
+		var fecha = new Date($('.datepicker').val());
+		Meteor.call('comerMediaTarde',fecha,"Otro",$("#otro-media-tarde").val(),Meteor.userId());
+	},
+	'click .comer-otro-cena': function(e){
+		var fecha = new Date($('.datepicker').val());
+		Meteor.call('comerCena',fecha,"Otro",$("#otro-cena").val(),Meteor.userId());
 	}
 });
 
