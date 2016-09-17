@@ -562,6 +562,74 @@ Template.PerfilUserMeals.rendered = function() {
 	$(".picker__day--today").addClass("picker__day--selected picker__day--highlighted");
 	$(".picker__day--today").attr("aria-selected",true);
 	$(".picker__day--today").attr("aria-activedescendant",true);
-	// console.log(Date().toString());
-	// $('.datepicker').val(Date().toString());
+	Session.set('dateSelected',new Date($('.datepicker').val()));
 };
+
+Template.PerfilUserMeals.helpers({
+	desayunoMealTitulo: function(){
+		var paramId = Router.current().params._id;
+		return Meals.findOne({fecha:Session.get('dateSelected')}).desayuno.titulo;
+	},
+	mediaMañanaMealTitulo: function(){
+		var paramId = Router.current().params._id;
+		return Meals.findOne({fecha:Session.get('dateSelected')}).media_mañana.titulo;
+	},
+	comidaMealTitulo: function(){
+		var paramId = Router.current().params._id;
+		return Meals.findOne({fecha:Session.get('dateSelected')}).comida.titulo;
+	},
+	mediaTardeMealTitulo: function(){
+		var paramId = Router.current().params._id;
+		return Meals.findOne({fecha:Session.get('dateSelected')}).media_tarde.titulo;
+	},
+	cenaMealTitulo: function(){
+		var paramId = Router.current().params._id;
+		return Meals.findOne({fecha:Session.get('dateSelected')}).cena.titulo;
+	},
+	desayunoMealDetalle: function(){
+		var paramId = Router.current().params._id;
+		return Meals.findOne({fecha:Session.get('dateSelected')}).desayuno.detalle;
+	},
+	mediaMañanaMealDetalle: function(){
+		var paramId = Router.current().params._id;
+		return Meals.findOne({fecha:Session.get('dateSelected')}).media_mañana.detalle;
+	},
+	comidaMealDetalle: function(){
+		var paramId = Router.current().params._id;
+		return Meals.findOne({fecha:Session.get('dateSelected')}).comida.detalle;
+	},
+	mediaTardeMealDetalle: function(){
+		var paramId = Router.current().params._id;
+		return Meals.findOne({fecha:Session.get('dateSelected')}).media_tarde.detalle;
+	},
+	cenaMealDetalle: function(){
+		var paramId = Router.current().params._id;
+		return Meals.findOne({fecha:Session.get('dateSelected')}).cena.detalle;
+	},
+	desayunoMealRacion: function(){
+		var paramId = Router.current().params._id;
+		return Meals.findOne({fecha:Session.get('dateSelected')}).desayuno.racion;
+	},
+	mediaMañanaMealRacion: function(){
+		var paramId = Router.current().params._id;
+		return Meals.findOne({fecha:Session.get('dateSelected')}).media_mañana.racion;
+	},
+	comidaMealRacion: function(){
+		var paramId = Router.current().params._id;
+		return Meals.findOne({fecha:Session.get('dateSelected')}).comida.racion;
+	},
+	mediaTardeMealRacion: function(){
+		var paramId = Router.current().params._id;
+		return Meals.findOne({fecha:Session.get('dateSelected')}).media_tarde.racion;
+	},
+	cenaMealRacion: function(){
+		var paramId = Router.current().params._id;
+		return Meals.findOne({fecha:Session.get('dateSelected')}).cena.racion;
+	}
+});
+
+Template.PerfilUserMeals.events({
+	'change .datepicker': function(e){
+		Session.set('dateSelected',new Date($('.datepicker').val()));
+	}
+});

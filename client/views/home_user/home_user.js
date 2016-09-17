@@ -52,6 +52,7 @@ Template.HomeUser.rendered = function() {
 	$(".picker__day--today").addClass("picker__day--selected picker__day--highlighted");
 	$(".picker__day--today").attr("aria-selected",true);
 	$(".picker__day--today").attr("aria-activedescendant",true);
+	Session.set('dateSelected',new Date($('.datepicker').val()));
 	// console.log(Date().toString());
 	// $('.datepicker').val(Date().toString());
 };
@@ -166,6 +167,9 @@ Template.HomeUser.events({
 	'click .comer-otro-cena': function(e){
 		var fecha = new Date($('.datepicker').val());
 		Meteor.call('comerCena',fecha,"Otro",$("#otro-cena").val(),Meteor.userId());
+	},
+	'change .datepicker': function(e){
+		Session.set('dateSelected',new Date($('.datepicker').val()));
 	}
 });
 
@@ -242,5 +246,55 @@ Template.HomeUser.helpers({
 	},
 	colorTarjeta: function(){
 		return coloresTarjetas[this.count];
+	},
+	classDesayunoRegistrado: function(){
+		if(Meals.findOne({fecha:Session.get('dateSelected')}).desayuno){
+			return 'grey';
+		}
+	},
+	classMediaMañanaRegistrado: function(){
+		if(Meals.findOne({fecha:Session.get('dateSelected')}).media_mañana){
+			return 'grey';
+		}
+	},
+	classComidaRegistrado: function(){
+		if(Meals.findOne({fecha:Session.get('dateSelected')}).comida){
+			return 'grey';
+		}
+	},
+	classMediaTardeRegistrado: function(){
+		if(Meals.findOne({fecha:Session.get('dateSelected')}).media_tarde){
+			return 'grey';
+		}
+	},
+	classCenaRegistrado: function(){
+		if(Meals.findOne({fecha:Session.get('dateSelected')}).cena){
+			return 'grey';
+		}
+	},
+	iconDesayunoRegistrado: function(){
+		if(Meals.findOne({fecha:Session.get('dateSelected')}).desayuno){
+			return true;
+		}
+	},
+	iconMediaMañanaRegistrado: function(){
+		if(Meals.findOne({fecha:Session.get('dateSelected')}).media_mañana){
+			return true;
+		}
+	},
+	iconComidaRegistrado: function(){
+		if(Meals.findOne({fecha:Session.get('dateSelected')}).comida){
+			return true;
+		}
+	},
+	iconMediaTardeRegistrado: function(){
+		if(Meals.findOne({fecha:Session.get('dateSelected')}).media_tarde){
+			return true;
+		}
+	},
+	iconCenaRegistrado: function(){
+		if(Meals.findOne({fecha:Session.get('dateSelected')}).cena){
+			return true;
+		}
 	}
 });

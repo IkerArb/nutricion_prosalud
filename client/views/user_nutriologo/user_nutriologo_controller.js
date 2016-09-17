@@ -20,7 +20,8 @@ this.UserNutriologoController = RouteController.extend({
 
 		var subs = [
 			Meteor.subscribe("estudios_user_nutriologo"),
-			Meteor.subscribe("info_user",this.params._id)
+			Meteor.subscribe("info_user",this.params._id),
+			Meteor.subscribe("meals_current_user")
 		];
 		var ready = true;
 		_.each(subs, function(sub) {
@@ -36,7 +37,8 @@ this.UserNutriologoController = RouteController.extend({
 		var data = {
 			params: this.params || {},
 			estudios_user_nutriologo: Estudios.find({}, {}),
-			info_user: Meteor.users.findOne()
+			info_user: Meteor.users.findOne(),
+			meals: Meals.find()
 		};
 
 
