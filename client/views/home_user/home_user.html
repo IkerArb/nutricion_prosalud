@@ -18,9 +18,14 @@
 				<!-- tarjeta desayuno -->
 				<div class="row">
 	        <div id="desayuno" class="col s12 m6">
-	          <div class="card hoverable desayuno">
+	          <div class="card hoverable desayuno {{classDesayunoRegistrado}}">
 	            <div class="card-content">
-	              <span class="card-title">Desayuno</span>
+	              <span class="card-title">
+									{{#if iconDesayunoRegistrado}}
+										<i class="material-icons">local_dining</i>
+									{{/if}}
+									Desayuno
+								</span>
 	              <p>Horario: <strong>8AM - 10AM</strong></p>
 								<p>
 									Raciones: <br />
@@ -65,9 +70,14 @@
 
 				<!-- tarjeta media mañana -->
 	        <div id="media-manana" class="col s12 m6">
-	          <div class="card hoverable media-manana">
+	          <div class="card hoverable media-manana {{classMediaMañanaRegistrado}}">
 	            <div class="card-content">
-	              <span class="card-title">Media Mañana</span>
+	              <span class="card-title">
+									{{#if iconMediaMañanaRegistrado}}
+										<i class="material-icons">local_dining</i>
+									{{/if}}
+									Media Mañana
+								</span>
 	              <p>Horario: <strong>11AM - 1PM</strong></p>
 								<p>
 									Raciones: <br />
@@ -110,9 +120,14 @@
 
 				<!-- tarjeta comida -->
 	        <div id="comida" class="col s12 m6">
-	          <div class="card hoverable comida">
+	          <div class="card hoverable comida {{classComidaRegistrado}}">
 	            <div class="card-content">
-	              <span class="card-title">Comida</span>
+	              <span class="card-title">
+									{{#if iconComidaRegistrado}}
+										<i class="material-icons">local_dining</i>
+									{{/if}}
+									Comida
+								</span>
 	              <p>Horario: <strong>2PM - 4PM</strong></p>
 								<p>
 									Raciones: <br />
@@ -155,9 +170,14 @@
 
 				<!-- tarjeta media tarde -->
 	        <div id="media-tarde" class="col s12 m6">
-	          <div class="card hoverable media-tarde">
+	          <div class="card hoverable media-tarde {{classMediaTardeRegistrado}}">
 	            <div class="card-content">
-	              <span class="card-title">Media Tarde</span>
+	              <span class="card-title">
+									{{#if iconMediaTardeRegistrado}}
+										<i class="material-icons">local_dining</i>
+									{{/if}}
+									Media Tarde
+								</span>
 	              <p>Horario: <strong>5PM - 8PM</strong></p>
 								<p>
 									Raciones: <br />
@@ -200,9 +220,14 @@
 
 				<!-- tarjeta cena -->
 	        <div id="cena" class="col s12 m6">
-	          <div class="card hoverable cena">
+	          <div class="card hoverable cena {{classCenaRegistrado}}">
 	            <div class="card-content">
-	              <span class="card-title">Cena</span>
+	              <span class="card-title">
+									{{#if iconCenaRegistrado}}
+										<i class="material-icons">local_dining</i>
+									{{/if}}
+									Cena
+								</span>
 	              <p>Horario: <strong>9PM - 11PM</strong></p>
 								<p>
 									Raciones: <br />
