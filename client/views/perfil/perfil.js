@@ -1,3 +1,6 @@
+var colorGraphs = ['#880e4f', '#651fff', '#ffd600', '#b71c1c', '#039be5',
+'#f15c80', '#e4d354', '#2b908f', '#f45b5b', '#91e8e1'];
+
 Template.Perfil.rendered = function() {
 $('ul.tabs').tabs();
 };
@@ -7,7 +10,37 @@ Template.Perfil.events({
 });
 
 Template.Perfil.helpers({
-  createChart: function () {
+  pesoReciente: function(){
+		return Estudios.findOne({paciente:Meteor.userId()},{sort:{createdAt:-1}}).peso;
+	},
+	tallaReciente: function(){
+		return Estudios.findOne({paciente:Meteor.userId()},{sort:{createdAt:-1}}).talla;
+	},
+	grasaReciente: function(){
+		return Estudios.findOne({paciente:Meteor.userId()},{sort:{createdAt:-1}}).grasa;
+	},
+	musculoReciente: function(){
+		return Estudios.findOne({paciente:Meteor.userId()},{sort:{createdAt:-1}}).muscular;
+	},
+	aguaReciente: function(){
+		return Estudios.findOne({paciente:Meteor.userId()},{sort:{createdAt:-1}}).agua;
+	},
+  chartGeneral: function () {
+		var estudios = Estudios.find({paciente:Meteor.userId()},{sort:{createdAt:1}}).fetch();
+		var fechas = [];
+		var pesos = [];
+		var tallas = [];
+		var grasas = [];
+		var musculos = [];
+		var aguas = [];
+		for (var i in estudios) {
+			pesos.push(estudios[i].peso);
+			tallas.push(estudios[i].talla);
+			grasas.push(estudios[i].grasa);
+			musculos.push(estudios[i].muscular);
+			aguas.push(estudios[i].agua);
+			fechas.push(estudios[i].createdAt.toLocaleDateString());
+		}
     var Highcharts = require('highcharts');
       // Gather data:
 
@@ -16,20 +49,19 @@ Template.Perfil.helpers({
         // Create standard Highcharts chart with options:
         Highcharts.chart('chart', {
           title: {
-            text: 'Monthly Average Temperature',
+            text: 'Gráfica General de Todas las Métricas',
             x: -20 //center
         },
         subtitle: {
-            text: 'Source: WorldClimate.com',
+            text: 'De acuerdo a las mediciones hechas',
             x: -20
         },
         xAxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            categories: fechas
         },
         yAxis: {
             title: {
-                text: 'Temperature (°C)'
+                text: 'Valores'
             },
             plotLines: [{
                 value: 0,
@@ -38,7 +70,7 @@ Template.Perfil.helpers({
             }]
         },
         tooltip: {
-            valueSuffix: '°C'
+            valueSuffix: 'unidades'
         },
         legend: {
             layout: 'vertical',
@@ -47,22 +79,33 @@ Template.Perfil.helpers({
             borderWidth: 0
         },
         series: [{
-            name: 'Tokyo',
-            data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+            name: 'Peso',
+            data: pesos
         }, {
-            name: 'New York',
-            data: [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
+            name: 'Talla',
+            data: tallas
         }, {
-            name: 'Berlin',
-            data: [-0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]
+            name: 'Grasa',
+            data: grasas
         }, {
-            name: 'London',
-            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-        }]
+            name: 'Musculo',
+            data: musculos
+        },{
+					name: 'Agua',
+					data: aguas
+				}],
+				colors: colorGraphs
     });
   });
   },
-  createChart0: function () {
+  chartPeso: function () {
+		var estudios = Estudios.find({paciente:Meteor.userId()},{sort:{createdAt:1}}).fetch();
+		var fechas = [];
+		var pesos = [];
+		for (var i in estudios) {
+			pesos.push(estudios[i].peso);
+			fechas.push(estudios[i].createdAt.toLocaleDateString());
+		}
     var Highcharts = require('highcharts');
       // Gather data:
 
@@ -71,20 +114,19 @@ Template.Perfil.helpers({
         // Create standard Highcharts chart with options:
         Highcharts.chart('chart0', {
           title: {
-            text: 'Monthly Average Temperature',
+            text: 'Gráfica de Peso',
             x: -20 //center
         },
         subtitle: {
-            text: 'Source: WorldClimate.com',
+            text: 'Pesos medidos en kilogramos',
             x: -20
         },
         xAxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            categories: fechas
         },
         yAxis: {
             title: {
-                text: 'Temperature (°C)'
+                text: 'Peso (Kgs)'
             },
             plotLines: [{
                 value: 0,
@@ -93,7 +135,7 @@ Template.Perfil.helpers({
             }]
         },
         tooltip: {
-            valueSuffix: '°C'
+            valueSuffix: 'Kgs'
         },
         legend: {
             layout: 'vertical',
@@ -102,13 +144,21 @@ Template.Perfil.helpers({
             borderWidth: 0
         },
         series: [{
-            name: 'Tokyo',
-            data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
-        }]
+            name: 'Peso',
+            data: pesos
+        }],
+				colors: [colorGraphs[0]]
     });
   });
   },
-  createChart1: function () {
+  chartTalla: function () {
+		var estudios = Estudios.find({paciente:Meteor.userId()},{sort:{createdAt:1}}).fetch();
+		var fechas = [];
+		var tallas = [];
+		for (var i in estudios) {
+			tallas.push(estudios[i].talla);
+			fechas.push(estudios[i].createdAt.toLocaleDateString());
+		}
     var Highcharts = require('highcharts');
       // Gather data:
 
@@ -117,20 +167,19 @@ Template.Perfil.helpers({
         // Create standard Highcharts chart with options:
         Highcharts.chart('chart1', {
           title: {
-            text: 'Monthly Average Temperature',
+            text: 'Gráfica de talla de cintura',
             x: -20 //center
         },
         subtitle: {
-            text: 'Source: WorldClimate.com',
+            text: 'Tallas de Cintura medidas en cms',
             x: -20
         },
         xAxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            categories: fechas
         },
         yAxis: {
             title: {
-                text: 'Temperature (°C)'
+                text: 'Talla (Cms)'
             },
             plotLines: [{
                 value: 0,
@@ -139,7 +188,7 @@ Template.Perfil.helpers({
             }]
         },
         tooltip: {
-            valueSuffix: '°C'
+            valueSuffix: 'Cms'
         },
         legend: {
             layout: 'vertical',
@@ -148,35 +197,42 @@ Template.Perfil.helpers({
             borderWidth: 0
         },
         series: [ {
-            name: 'New York',
-            data: [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
-        }]
+            name: 'Tallas',
+            data: tallas
+        }],
+				colors: [colorGraphs[1]]
     });
   });
   },
-  createChart2: function () {
+  chartGrasa: function () {
     var Highcharts = require('highcharts');
       // Gather data:
+			var estudios = Estudios.find({paciente:Meteor.userId()},{sort:{createdAt:1}}).fetch();
+			var fechas = [];
+			var grasas = [];
+			for (var i in estudios) {
+				grasas.push(estudios[i].grasa);
+				fechas.push(estudios[i].createdAt.toLocaleDateString());
+			}
 
       // Use Meteor.defer() to craete chart after DOM is ready:
       Meteor.defer(function() {
         // Create standard Highcharts chart with options:
         Highcharts.chart('chart2', {
           title: {
-            text: 'Monthly Average Temperature',
+            text: 'Gráfica de Porcentajes de Grasa',
             x: -20 //center
         },
         subtitle: {
-            text: 'Source: WorldClimate.com',
+            text: 'Grasa medida en porcentaje corporal',
             x: -20
         },
         xAxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            categories: fechas
         },
         yAxis: {
             title: {
-                text: 'Temperature (°C)'
+                text: '% de Grasa Corporal'
             },
             plotLines: [{
                 value: 0,
@@ -185,7 +241,7 @@ Template.Perfil.helpers({
             }]
         },
         tooltip: {
-            valueSuffix: '°C'
+            valueSuffix: '%'
         },
         legend: {
             layout: 'vertical',
@@ -194,35 +250,42 @@ Template.Perfil.helpers({
             borderWidth: 0
         },
         series: [{
-            name: 'Berlin',
-            data: [-0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]
-        }]
+            name: 'Grasas',
+            data: grasas
+        }],
+				colors: [colorGraphs[2]]
     });
   });
   },
-  createChart3: function () {
+  chartMusculo: function () {
     var Highcharts = require('highcharts');
       // Gather data:
+			var estudios = Estudios.find({paciente:Meteor.userId()},{sort:{createdAt:1}}).fetch();
+			var fechas = [];
+			var musculos = [];
+			for (var i in estudios) {
+				musculos.push(estudios[i].muscular);
+				fechas.push(estudios[i].createdAt.toLocaleDateString());
+			}
 
       // Use Meteor.defer() to craete chart after DOM is ready:
       Meteor.defer(function() {
         // Create standard Highcharts chart with options:
         Highcharts.chart('chart3', {
           title: {
-            text: 'Monthly Average Temperature',
+            text: 'Gráfica de Porcentajes de Músculo',
             x: -20 //center
         },
         subtitle: {
-            text: 'Source: WorldClimate.com',
+            text: 'Músculo medida en porcentaje corporal',
             x: -20
         },
         xAxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            categories: fechas
         },
         yAxis: {
             title: {
-                text: 'Temperature (°C)'
+                text: '% de Músculo'
             },
             plotLines: [{
                 value: 0,
@@ -231,7 +294,7 @@ Template.Perfil.helpers({
             }]
         },
         tooltip: {
-            valueSuffix: '°C'
+            valueSuffix: '%'
         },
         legend: {
             layout: 'vertical',
@@ -240,9 +303,63 @@ Template.Perfil.helpers({
             borderWidth: 0
         },
         series: [{
-            name: 'London',
-            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-        }]
+            name: 'Músculo',
+            data: musculos
+        }],
+				colors: [colorGraphs[3]]
+    });
+  });
+  },
+	chartAgua: function () {
+    var Highcharts = require('highcharts');
+      // Gather data:
+			var estudios = Estudios.find({paciente:Meteor.userId()},{sort:{createdAt:1}}).fetch();
+			var fechas = [];
+			var aguas = [];
+			for (var i in estudios) {
+				aguas.push(estudios[i].agua);
+				fechas.push(estudios[i].createdAt.toLocaleDateString());
+			}
+
+      // Use Meteor.defer() to craete chart after DOM is ready:
+      Meteor.defer(function() {
+        // Create standard Highcharts chart with options:
+        Highcharts.chart('chart4', {
+          title: {
+            text: 'Gráfica de Porcentajes de Agua',
+            x: -20 //center
+        },
+        subtitle: {
+            text: 'Agua medida en porcentaje corporal',
+            x: -20
+        },
+        xAxis: {
+            categories: fechas
+        },
+        yAxis: {
+            title: {
+                text: '% de Agua'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: '%'
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        series: [{
+            name: 'Agua',
+            data: aguas
+        }],
+				colors: [colorGraphs[4]]
     });
   });
   },
