@@ -19,7 +19,8 @@ this.PerfilController = RouteController.extend({
 
 
 		var subs = [
-			Meteor.subscribe("current_user_data")
+			Meteor.subscribe("current_user_data"),
+			Meteor.subscribe("estudios_current_user")
 		];
 		var ready = true;
 		_.each(subs, function(sub) {
@@ -34,6 +35,7 @@ this.PerfilController = RouteController.extend({
 
 		var data = {
 			params: this.params || {},
+			estudios: Estudios.find()
 		};
 
 

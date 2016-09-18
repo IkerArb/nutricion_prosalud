@@ -14,7 +14,7 @@
 						<h4>Peso</h4>
 					</div>
 	        <span style="" class="pull-center white-text spanGrande">
-						70 Kgs.
+						{{pesoReciente}} Kgs.
 	        </span>
 					<i style="" class="fa fa-balance-scale iconoGrande" aria-hidden="true"></i>
 	      </div>
@@ -26,7 +26,7 @@
 							<h5>Talla</h5>
 						</div>
 						<span style="" class=" pull-center white-text spanPequeno">
-							80 cm.
+							{{tallaReciente}} cm.
 						</span>
 						<i  style="color:#90caf9 " class="fa fa-stethoscope iconoPequeno" aria-hidden="true"></i>
 					</div>
@@ -37,7 +37,7 @@
 							<h5>Grasa</h5>
 						</div>
 						<span style="left:29px;"  class="spanPequeno pull-center white-text">
-							15 %
+							{{grasaReciente}} %
 						</span>
 						<i style="color:#ff6f00;left:40px" class="fa fa-heartbeat iconoPequeno" aria-hidden="true"></i>
 					</div>
@@ -48,7 +48,7 @@
 							<h5>Musc.</h5>
 						</div>
 						<span style="left:30px;" class="spanPequeno pull-center white-text">
-							70 %
+							{{musculoReciente}} %
 						</span>
 						<i style="color:black;left:41px" class="fa fa-hand-rock-o iconoPequeno" aria-hidden="true"></i>
 					</div>
@@ -59,31 +59,31 @@
 							<h5>Agua</h5>
 						</div>
 						<span style="left:28px" class="pull-center white-text spanPequeno">
-							15 %
+							{{aguaReciente}} %
 						</span>
 						<i style="color:#1de9b6" class="fa fa-tint iconoPequeno" aria-hidden="true"></i>
 					</div>
 				</div>
 			</div>
+			</div>
+			<div id="historico" class="">
+				<h5>Historico</h5>
+				<div class="col s12">
+		      <ul class="tabs">
+		        <li class="tab col s2"><a class="active" href="#chart">General</a></li>
+		        <li class="tab col s2"><a  href="#chart0">Peso</a></li>
+		        <li class="tab col s2"><a href="#chart1">Talla</a></li>
+		        <li class="tab col s2"><a href="#chart2">Grasa</a></li>
+						<li class="tab col s2"><a href="#chart3">Musculo</a></li>
+						<li class="tab col s2"><a href="#chart4">Agua</a></li>
+		      </ul>
+		    </div>
+				<div id="chart">{{chartGeneral}}</div>
+				<div id="chart0">{{chartPeso}}</div>
+				<div id="chart1">{{chartTalla}}</div>
+				<div id="chart2">{{chartGrasa}}</div>
+				<div id="chart3">{{chartMusculo}}</div>
+				<div id="chart4">{{chartAgua}}</div>
+			</div>
 		</div>
-		<div id="historico" class="">
-			<h5>Historico</h5>
-			<div class="col s12">
-      <ul class="tabs">
-        <li class="tab col s2"><a class="active" href="#chart">General</a></li>
-        <li class="tab col s2"><a  href="#chart0">Peso</a></li>
-        <li class="tab col s2"><a href="#chart1">Talla</a></li>
-        <li class="tab col s2"><a href="#chart2">Grasa</a></li>
-				<li class="tab col s2"><a href="#chart3">Musculo</a></li>
-				<li class="tab col s2"><a href="#chart4">Agua</a></li>
-      </ul>
-    </div>
-			<div style="display:block" id="chart">{{createChart}}</div>
-			<div style="display:none" id="chart0">{{createChart0}}</div>
-			<div style="display:none" id="chart1">{{createChart1}}</div>
-			<div style="display:none" id="chart2">{{createChart2}}</div>
-			<div style="display:none" id="chart3">{{createChart3}}</div>
-			<div style="display:none" id="chart4">Soon!</div>
-		</div>
-	</div>
 	</template>
